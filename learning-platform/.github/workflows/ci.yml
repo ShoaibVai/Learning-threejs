@@ -35,23 +35,11 @@ jobs:
       - name: Build application
         run: npm run build
 
-  deploy:
+  notification:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v20
-        if: secrets.VERCEL_TOKEN != ''
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.ORG_ID }}
-          vercel-project-id: ${{ secrets.PROJECT_ID }}
-          vercel-args: '--prod'
-      
-      - name: Deploy skipped
-        if: secrets.VERCEL_TOKEN == ''
-        run: echo "Vercel deployment skipped. Set VERCEL_TOKEN secret to enable."
+      - name: Build successful
+        run: echo "✅ Build and tests passed! Ready for deployment on Netlify."

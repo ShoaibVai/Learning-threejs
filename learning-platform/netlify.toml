@@ -1,0 +1,46 @@
+# Netlify Configuration for Learning Platform
+
+[build]
+command = "npm run build"
+publish = ".next"
+
+[build.environment]
+NODE_VERSION = "20"
+NODE_ENV = "production"
+
+# Configure redirects for Next.js
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+# Security headers
+[[headers]]
+for = "/*"
+[headers.values]
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
+X-XSS-Protection = "1; mode=block"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache headers for static assets
+[[headers]]
+for = "/_next/static/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache headers for images
+[[headers]]
+for = "/images/*"
+[headers.values]
+Cache-Control = "public, max-age=3600"
+
+# Disable caching for HTML
+[[headers]]
+for = "/*.html"
+[headers.values]
+Cache-Control = "no-cache, no-store, must-revalidate"
+
+[functions]
+node_bundler = "esbuild"

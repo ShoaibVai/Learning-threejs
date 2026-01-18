@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import type { Lesson, QuizQuestion } from '@/types'
 import { getProgressStore } from '@/lib/progress'
 
@@ -10,7 +10,7 @@ export default function QuizComponent({ lesson }: { lesson: Lesson }) {
   const [score, setScore] = useState(0)
 
   const handleAnswer = (questionId: string, answer: string | string[]) => {
-    setAnswers((prev) => ({ ...prev, [questionId]: answer }))
+    setAnswers((prev: Record<string, string | string[]>) => ({ ...prev, [questionId]: answer }))
   }
 
   const handleSubmit = () => {
@@ -84,7 +84,7 @@ export default function QuizComponent({ lesson }: { lesson: Lesson }) {
                           type="radio"
                           name={question.id}
                           value={option}
-                          onChange={(e) => handleAnswer(question.id, e.target.value)}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleAnswer(question.id, e.target.value)}
                           className="w-4 h-4"
                         />
                         <span>{option}</span>
@@ -100,7 +100,7 @@ export default function QuizComponent({ lesson }: { lesson: Lesson }) {
                         <input
                           type="checkbox"
                           value={option}
-                          onChange={(e) => {
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                             const current = (answers[question.id] as string[]) || []
                             if (e.target.checked) {
                               handleAnswer(question.id, [...current, option])
@@ -118,7 +118,7 @@ export default function QuizComponent({ lesson }: { lesson: Lesson }) {
 
                 {question.type === 'short-answer' && (
                   <textarea
-                    onChange={(e) => handleAnswer(question.id, e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleAnswer(question.id, e.target.value)}
                     className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800"
                     rows={4}
                     placeholder="Type your answer here..."

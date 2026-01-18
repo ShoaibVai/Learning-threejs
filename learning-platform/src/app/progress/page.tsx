@@ -119,7 +119,7 @@ export default function ProgressPage() {
             <h3 className="font-semibold mb-2">Import Progress</h3>
             <textarea
               value={importData}
-              onChange={(e) => setImportData(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setImportData(e.target.value)}
               placeholder="Paste exported progress data here..."
               className="w-full p-3 border rounded-lg mb-2"
               rows={6}

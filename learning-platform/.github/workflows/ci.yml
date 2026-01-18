@@ -45,8 +45,13 @@ jobs:
       
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v20
+        if: secrets.VERCEL_TOKEN != ''
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.ORG_ID }}
           vercel-project-id: ${{ secrets.PROJECT_ID }}
           vercel-args: '--prod'
+      
+      - name: Deploy skipped
+        if: secrets.VERCEL_TOKEN == ''
+        run: echo "Vercel deployment skipped. Set VERCEL_TOKEN secret to enable."

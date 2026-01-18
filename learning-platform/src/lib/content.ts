@@ -65,7 +65,7 @@ export async function getLessonsForModule(
     return []
   }
   
-  const files = fs.readdirSync(moduleDir).filter((f) => f.endsWith('.json'))
+  const files = fs.readdirSync(moduleDir).filter((f: string) => f.endsWith('.json'))
   const lessons: Lesson[] = []
   
   for (const file of files) {

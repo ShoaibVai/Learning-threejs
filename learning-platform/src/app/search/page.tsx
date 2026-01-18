@@ -66,7 +66,7 @@ export default function SearchPage() {
           <input
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
             placeholder="Search for lessons, topics, or concepts..."
             className="w-full p-4 text-lg border-2 border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:border-primary-500 focus:outline-none"
           />
@@ -81,7 +81,7 @@ export default function SearchPage() {
             <p className="text-gray-600 dark:text-gray-400 mb-4">
               Found {results.length} result{results.length !== 1 ? 's' : ''}
             </p>
-            {results.map((result) => (
+            {results.map((result: any) => (
               <Link
                 key={result.lessonId}
                 href={`/tracks/${result.trackId}/modules/${result.moduleId}/lessons/${result.lessonId}`}

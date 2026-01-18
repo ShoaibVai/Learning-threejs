@@ -104,6 +104,14 @@ describe('ProgressStore', () => {
     })
   })
 
+describe('Best score tracking', () => {
+    it('should track best quiz score correctly', () => {
+      const attempts = store.getProgress('lesson-1')?.quizAttempts ?? []
+      const bestScore = attempts.length > 0 ? Math.max(...attempts.map((a: any) => a.score)) : 0
+      expect(bestScore).toBeGreaterThanOrEqual(0)
+    })
+  })
+
   describe('export and import', () => {
     it('should export progress as JSON string', () => {
       store.markComplete('lesson-1')

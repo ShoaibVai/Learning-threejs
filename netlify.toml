@@ -1,7 +1,7 @@
 # Netlify Configuration for Learning Platform
 
 [build]
-command = "npm install --legacy-peer-deps && npm run build"
+command = "npm ci --legacy-peer-deps && npm run build"
 publish = ".next"
 
 [build.environment]

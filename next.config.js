@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const path = require('path')
+
 const nextConfig = {
   reactStrictMode: true,
   // Optimize for production
@@ -11,6 +13,11 @@ const nextConfig = {
   // Image optimization
   images: {
     unoptimized: process.env.NODE_ENV === 'production' ? false : true,
+  },
+  // Webpack configuration for path aliases
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.join(__dirname, 'src')
+    return config
   },
   // Headers for security and performance
   headers: async () => {

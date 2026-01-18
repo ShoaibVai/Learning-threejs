@@ -1,0 +1,198 @@
+{
+  "id": "router-port-forwarding",
+  "title": "Router Basics & Port Forwarding",
+  "slug": "router-port-forwarding",
+  "overview": "Learn how routers work, understand NAT (Network Address Translation), and configure port forwarding to make your local server accessible from the internet.",
+  "objectives": [
+    "Understand how NAT works and why your local IP isn't accessible from the internet",
+    "Configure port forwarding on a home router",
+    "Understand the security implications of exposing ports",
+    "Test external accessibility safely"
+  ],
+  "prerequisites": [
+    "Completed 'Local Server Fundamentals'",
+    "Access to router admin panel",
+    "Basic networking concepts"
+  ],
+  "durationMinutes": 60,
+  "order": 2,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Understanding NAT and Your Router",
+      "content": "# What is NAT (Network Address Translation)?\n\nYour router acts as a gateway between your private network and the internet:\n\n```\nInternet <----> [Router (NAT)] <----> Your Devices (Private IPs)\n   Public IP                        192.168.1.x\n```\n\n## The Problem\n\n- Your ISP gives you **one public IP address**\n- You have **multiple devices** on your network (phones, laptops, servers)\n- Each device has a **private IP** (192.168.x.x)\n- **Private IPs cannot be accessed from the internet directly**\n\nNAT solves this by:\n1. All outgoing traffic appears to come from your router's public IP\n2. Incoming traffic is blocked by default (your router's firewall)\n3. Port forwarding creates explicit rules to allow incoming connections\n\n## Port Forwarding\n\nPort forwarding tells your router:\n> \"When someone connects to public IP:8080, forward it to 192.168.1.100:3000\"\n\n**⚠️ WARNING:** Port forwarding exposes your machine to the internet. Only do this for learning with proper security measures!",
+      "links": []
+    },
+    {
+      "type": "guide",
+      "title": "Setting Up Port Forwarding",
+      "content": "# Port Forwarding Configuration\n\n## Step 1: Find Your Router's IP\n\n**Windows:**\n```bash\nipconfig\n```\nLook for \"Default Gateway\" (usually 192.168.1.1 or 192.168.0.1)\n\n**macOS/Linux:**\n```bash\nnetstat -nr | grep default\n```\n\n## Step 2: Access Router Admin Panel\n\n1. Open browser and navigate to your router's IP (e.g., http://192.168.1.1)\n2. Login with admin credentials (check router label or manual)\n3. Find \"Port Forwarding\" or \"Virtual Servers\" section\n\n## Step 3: Create Port Forwarding Rule\n\n**Example Configuration:**\n```\nService Name: My Dev Server\nExternal Port: 8080\nInternal IP: 192.168.1.100 (your machine's local IP)\nInternal Port: 3000\nProtocol: TCP\n```\n\nNow anyone can access: `http://YOUR_PUBLIC_IP:8080`\n\n## Step 4: Test It\n\n1. Find your public IP: visit whatismyipaddress.com\n2. Try accessing: http://YOUR_PUBLIC_IP:8080\n3. Ask a friend on a different network to try\n\n**Security Note:** This exposes your machine. In production, use a VPS instead!",
+      "links": []
+    }
+  ],
+  "resources": [
+    {
+      "title": "How NAT Works",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-network-address-translation/",
+      "type": "article",
+      "description": "Comprehensive guide to Network Address Translation"
+    },
+    {
+      "title": "Port Forwarding Setup Guides by Router Brand",
+      "url": "https://portforward.com/router.htm",
+      "type": "tool",
+      "description": "Step-by-step guides for specific router models"
+    },
+    {
+      "title": "Check if Your Port is Open",
+      "url": "https://www.yougetsignal.com/tools/open-ports/",
+      "type": "tool",
+      "description": "Test if your port forwarding works"
+    },
+    {
+      "title": "Understanding Public vs Private IP",
+      "url": "https://www.avast.com/c-ip-address-public-vs-private",
+      "type": "article"
+    }
+  ],
+  "miniProject": {
+    "title": "Expose Your Server to the Internet (Safely)",
+    "description": "Configure port forwarding to make your local server accessible from the internet. Implement basic security and test external access.",
+    "estimatedTime": 45,
+    "steps": [
+      "Set a static IP for your development machine (or use DHCP reservation)",
+      "Configure port forwarding on your router (external 8080 -> internal 3000)",
+      "Add basic authentication to your server (username/password)",
+      "Add request logging to see incoming connections",
+      "Test access from an external network (mobile data, friend's network, or online port checker)",
+      "Document your public IP and test results",
+      "DISABLE port forwarding when done (security best practice)"
+    ],
+    "deliverables": [
+      "Screenshot of router port forwarding configuration",
+      "Modified server code with basic authentication",
+      "Test results from external access",
+      "Documentation of public IP and how to access your server"
+    ],
+    "rubric": [
+      "Port forwarding configured correctly (3 pts)",
+      "Server accessible from external network (3 pts)",
+      "Basic authentication implemented (2 pts)",
+      "Proper documentation and security awareness (2 pts)"
+    ],
+    "starterPath": "/practice/server-starters/express-basic"
+  },
+  "quiz": {
+    "passingScore": 70,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "What does NAT stand for?",
+        "options": [
+          "Network Access Token",
+          "Network Address Translation",
+          "Network Authentication Tool",
+          "Node Application Transfer"
+        ],
+        "correctAnswer": "Network Address Translation",
+        "explanation": "NAT (Network Address Translation) allows multiple devices on a private network to share a single public IP address.",
+        "points": 10
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "Why can't you directly access a device with IP 192.168.1.100 from the internet?",
+        "options": [
+          "It's a private IP address, not routable on the internet",
+          "The port number is wrong",
+          "The device is turned off",
+          "You need HTTPS"
+        ],
+        "correctAnswer": "It's a private IP address, not routable on the internet",
+        "explanation": "192.168.x.x addresses are private (RFC 1918) and cannot be routed on the public internet. Your router uses NAT to translate between public and private IPs.",
+        "points": 15
+      },
+      {
+        "id": "q3",
+        "type": "single",
+        "question": "What is the typical default gateway IP for home routers?",
+        "options": [
+          "127.0.0.1",
+          "192.168.1.1 or 192.168.0.1",
+          "8.8.8.8",
+          "10.0.0.1"
+        ],
+        "correctAnswer": "192.168.1.1 or 192.168.0.1",
+        "explanation": "Most home routers use 192.168.1.1 or 192.168.0.1 as their default gateway IP. You can find yours with ipconfig (Windows) or netstat -nr (Unix).",
+        "points": 10
+      },
+      {
+        "id": "q4",
+        "type": "multiple",
+        "question": "What are valid reasons to use port forwarding? (Select all that apply)",
+        "options": [
+          "To host a game server accessible to friends",
+          "To run a personal website from home",
+          "To improve internet speed",
+          "To access security cameras remotely"
+        ],
+        "correctAnswer": ["To host a game server accessible to friends", "To run a personal website from home", "To access security cameras remotely"],
+        "explanation": "Port forwarding allows external access to services on your private network. It doesn't affect internet speed.",
+        "points": 20
+      },
+      {
+        "id": "q5",
+        "type": "single",
+        "question": "What security risk does port forwarding introduce?",
+        "options": [
+          "It makes your internet slower",
+          "It exposes your internal services to the internet",
+          "It prevents you from using HTTPS",
+          "It disables your WiFi"
+        ],
+        "correctAnswer": "It exposes your internal services to the internet",
+        "explanation": "Port forwarding creates a pathway from the internet to your internal network. Any vulnerabilities in your service can be exploited by attackers.",
+        "points": 15
+      },
+      {
+        "id": "q6",
+        "type": "short-answer",
+        "question": "Explain what happens when you configure port forwarding for external port 8080 to internal IP 192.168.1.100:3000.",
+        "correctAnswer": "The router forwards any incoming traffic on public IP port 8080 to the device at 192.168.1.100 on port 3000. External users connect to your public IP:8080 and reach your local server on port 3000.",
+        "explanation": "This is the core concept of port forwarding: mapping external ports to internal IP:port combinations. The router acts as a bridge between the public internet and your private network.",
+        "points": 30
+      }
+    ]
+  },
+  "environment": {
+    "setupSteps": [
+      "Ensure your server from Lesson 1 is running",
+      "Find your local IP address (ipconfig/ifconfig)",
+      "Find your router's admin IP (default gateway)",
+      "Access router admin panel in a web browser",
+      "Locate port forwarding section (might be under Advanced Settings)",
+      "Consider setting a static IP or DHCP reservation for stability"
+    ],
+    "commands": [
+      "ipconfig  # Windows: find default gateway and local IP",
+      "netstat -nr | grep default  # macOS/Linux: find default gateway",
+      "curl ifconfig.me  # Find your public IP from command line",
+      "nslookup myip.opendns.com resolver1.opendns.com  # Another way to get public IP"
+    ],
+    "troubleshooting": [
+      {
+        "issue": "Can't access router admin panel",
+        "solution": "1) Verify you're connected to the router's network. 2) Check router label for correct IP and credentials. 3) Try 192.168.1.1, 192.168.0.1, or 10.0.0.1. 4) Reset router to factory settings (last resort)."
+      },
+      {
+        "issue": "Port forwarding isn't working",
+        "solution": "1) Verify your local IP hasn't changed (use static IP or DHCP reservation). 2) Check if your firewall is blocking the port. 3) Test locally first: curl http://YOUR_LOCAL_IP:3000. 4) Use an online port checker tool. 5) Some ISPs block certain ports or use CGNAT (Carrier-Grade NAT)."
+      },
+      {
+        "issue": "ISP uses CGNAT - port forwarding doesn't work",
+        "solution": "Some ISPs use CGNAT, giving you a 'public' IP that's actually shared. Contact your ISP about getting a real public IP (may cost extra), or use a VPN service with port forwarding, or use a VPS instead of hosting from home."
+      }
+    ]
+  }
+}

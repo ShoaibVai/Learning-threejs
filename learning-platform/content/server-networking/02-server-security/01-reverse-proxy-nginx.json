@@ -1,0 +1,199 @@
+{
+  "id": "reverse-proxy-nginx",
+  "title": "Reverse Proxy with Nginx",
+  "slug": "reverse-proxy-nginx",
+  "overview": "Master Nginx as a reverse proxy to route traffic, serve multiple applications on one server, and add features like load balancing and SSL termination.",
+  "objectives": [
+    "Understand what a reverse proxy is and its benefits",
+    "Install and configure Nginx as a reverse proxy",
+    "Route different paths or subdomains to different backend services",
+    "Serve static files efficiently while proxying dynamic content"
+  ],
+  "prerequisites": [
+    "Completed previous hosting lessons",
+    "Basic understanding of HTTP",
+    "Linux command line basics (or Windows equivalent)"
+  ],
+  "durationMinutes": 75,
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Understanding Reverse Proxies",
+      "content": "# What is a Reverse Proxy?\n\nA **reverse proxy** sits in front of your application servers and forwards client requests to them.\n\n```\nClient → Nginx (Reverse Proxy) → Your App(s)\n```\n\n## Why Use a Reverse Proxy?\n\n1. **Hide backend details**: Clients only see Nginx, not your Node.js/Python apps\n2. **SSL termination**: Handle HTTPS at the proxy level\n3. **Load balancing**: Distribute traffic across multiple backend servers\n4. **Static file serving**: Nginx serves static assets efficiently\n5. **Multiple apps on one server**: Route by path or subdomain\n6. **Caching**: Cache responses to reduce backend load\n7. **Security**: Add rate limiting, authentication, IP filtering\n\n## Example Setup\n\n```\nnginx (port 80/443)\n  ├─ / → Node.js app (port 3000)\n  ├─ /api → Python API (port 8000)\n  ├─ /static → filesystem (/var/www/static)\n  └─ blog.example.com → WordPress (port 9000)\n```\n\n## Forward vs Reverse Proxy\n\n- **Forward Proxy**: Client-side proxy (like VPN, hides client)\n- **Reverse Proxy**: Server-side proxy (hides backend servers)",
+      "links": []
+    },
+    {
+      "type": "guide",
+      "title": "Nginx Configuration",
+      "content": "# Setting Up Nginx Reverse Proxy\n\n## Installation\n\n**Ubuntu/Debian:**\n```bash\nsudo apt update\nsudo apt install nginx\nsudo systemctl start nginx\nsudo systemctl enable nginx\n```\n\n**macOS (Homebrew):**\n```bash\nbrew install nginx\nbrew services start nginx\n```\n\n**Windows:**\nDownload from nginx.org, extract, and run `nginx.exe`\n\n## Basic Reverse Proxy Configuration\n\nEdit `/etc/nginx/sites-available/default` (Linux) or `nginx.conf` (Windows/macOS):\n\n```nginx\nserver {\n    listen 80;\n    server_name example.com;\n\n    location / {\n        proxy_pass http://localhost:3000;\n        proxy_http_version 1.1;\n        proxy_set_header Upgrade $http_upgrade;\n        proxy_set_header Connection 'upgrade';\n        proxy_set_header Host $host;\n        proxy_set_header X-Real-IP $remote_addr;\n        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n        proxy_set_header X-Forwarded-Proto $scheme;\n        proxy_cache_bypass $http_upgrade;\n    }\n}\n```\n\n## Multiple Backend Services\n\n```nginx\nserver {\n    listen 80;\n    server_name myserver.com;\n\n    # Main app\n    location / {\n        proxy_pass http://localhost:3000;\n        include proxy_params;\n    }\n\n    # API server\n    location /api/ {\n        proxy_pass http://localhost:8000/;\n        include proxy_params;\n    }\n\n    # Static files (no proxy, serve directly)\n    location /static/ {\n        alias /var/www/static/;\n    }\n}\n```\n\n## Reload Configuration\n\n```bash\n# Test configuration\nsudo nginx -t\n\n# Reload (no downtime)\nsudo nginx -s reload\n\n# Or restart service\nsudo systemctl reload nginx\n```",
+      "links": []
+    }
+  ],
+  "resources": [
+    {
+      "title": "Nginx Official Documentation",
+      "url": "https://nginx.org/en/docs/",
+      "type": "documentation"
+    },
+    {
+      "title": "Nginx Reverse Proxy Guide",
+      "url": "https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/",
+      "type": "article"
+    },
+    {
+      "title": "Understanding Nginx Configuration",
+      "url": "https://www.digitalocean.com/community/tutorials/understanding-nginx-server-and-location-block-selection-algorithms",
+      "type": "article"
+    }
+  ],
+  "miniProject": {
+    "title": "Multi-Service Nginx Setup",
+    "description": "Configure Nginx to proxy multiple backend services, serve static files, and route requests based on paths.",
+    "estimatedTime": 60,
+    "steps": [
+      "Install Nginx on your system",
+      "Create two simple backend apps (e.g., Node.js on port 3000 and 4000)",
+      "Configure Nginx to proxy / to port 3000",
+      "Add a /api route that proxies to port 4000",
+      "Create a static file directory and serve it at /static",
+      "Test all routes work correctly",
+      "Add proper headers for WebSocket support",
+      "Document your configuration"
+    ],
+    "deliverables": [
+      "Working Nginx configuration file",
+      "Two backend services running simultaneously",
+      "Static file serving working",
+      "All routes accessible and properly routed"
+    ],
+    "rubric": [
+      "Nginx installed and running (1 pt)",
+      "Main route proxying works (2 pts)",
+      "API route proxying works (2 pts)",
+      "Static files served correctly (2 pts)",
+      "Proper headers configured (2 pts)",
+      "Clean, documented configuration (1 pt)"
+    ],
+    "starterPath": "/practice/server-starters/nginx-reverse-proxy-sample"
+  },
+  "quiz": {
+    "passingScore": 70,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "What is the primary purpose of a reverse proxy?",
+        "options": [
+          "To hide the client's IP address",
+          "To sit in front of backend servers and forward requests to them",
+          "To speed up DNS resolution",
+          "To encrypt all network traffic"
+        ],
+        "correctAnswer": "To sit in front of backend servers and forward requests to them",
+        "explanation": "A reverse proxy sits between clients and backend servers, forwarding requests and providing benefits like load balancing, SSL termination, and security.",
+        "points": 15
+      },
+      {
+        "id": "q2",
+        "type": "multiple",
+        "question": "What are benefits of using Nginx as a reverse proxy? (Select all that apply)",
+        "options": [
+          "SSL termination",
+          "Load balancing",
+          "Efficient static file serving",
+          "Database management"
+        ],
+        "correctAnswer": ["SSL termination", "Load balancing", "Efficient static file serving"],
+        "explanation": "Nginx excels at SSL termination, load balancing, and static file serving. It's not a database management tool.",
+        "points": 20
+      },
+      {
+        "id": "q3",
+        "type": "single",
+        "question": "Which Nginx directive is used to forward requests to a backend server?",
+        "options": [
+          "proxy_pass",
+          "proxy_forward",
+          "upstream",
+          "backend"
+        ],
+        "correctAnswer": "proxy_pass",
+        "explanation": "The proxy_pass directive specifies the backend server URL to forward requests to.",
+        "points": 10
+      },
+      {
+        "id": "q4",
+        "type": "single",
+        "question": "How do you reload Nginx configuration without downtime?",
+        "options": [
+          "nginx restart",
+          "nginx -s reload",
+          "nginx -r",
+          "systemctl restart nginx"
+        ],
+        "correctAnswer": "nginx -s reload",
+        "explanation": "nginx -s reload gracefully reloads configuration without dropping connections. 'systemctl restart nginx' causes downtime.",
+        "points": 15
+      },
+      {
+        "id": "q5",
+        "type": "single",
+        "question": "What header should you set to preserve the client's IP address when using a reverse proxy?",
+        "options": [
+          "X-Real-IP or X-Forwarded-For",
+          "Client-IP",
+          "Remote-Address",
+          "Origin-IP"
+        ],
+        "correctAnswer": "X-Real-IP or X-Forwarded-For",
+        "explanation": "X-Real-IP and X-Forwarded-For headers preserve the client's original IP address, which otherwise would be replaced by the proxy's IP.",
+        "points": 10
+      },
+      {
+        "id": "q6",
+        "type": "short-answer",
+        "question": "Explain how you would configure Nginx to serve /app from port 3000 and /api from port 8000.",
+        "correctAnswer": "Create two location blocks: location /app { proxy_pass http://localhost:3000; } and location /api { proxy_pass http://localhost:8000; }. Add necessary proxy headers in each block.",
+        "explanation": "This uses path-based routing where different URL paths are proxied to different backend servers. This is a common pattern for separating frontend and API services.",
+        "points": 30
+      }
+    ]
+  },
+  "environment": {
+    "setupSteps": [
+      "Install Nginx using your OS package manager",
+      "Locate configuration files: /etc/nginx (Linux), /usr/local/etc/nginx (macOS), or nginx installation dir (Windows)",
+      "Create backup of default configuration",
+      "Start Nginx service",
+      "Verify Nginx is running: curl http://localhost"
+    ],
+    "commands": [
+      "sudo nginx -t  # Test configuration syntax",
+      "sudo nginx -s reload  # Reload configuration",
+      "sudo systemctl status nginx  # Check service status (Linux)",
+      "sudo systemctl start nginx  # Start service",
+      "sudo systemctl stop nginx  # Stop service",
+      "sudo tail -f /var/log/nginx/access.log  # Watch access logs",
+      "sudo tail -f /var/log/nginx/error.log  # Watch error logs"
+    ],
+    "troubleshooting": [
+      {
+        "issue": "Nginx fails to start: 'Address already in use'",
+        "solution": "Port 80 or 443 is being used by another process. Find it: sudo lsof -i :80 (Linux/macOS) or netstat -ano | findstr :80 (Windows). Stop the conflicting service or change Nginx port in config."
+      },
+      {
+        "issue": "502 Bad Gateway error",
+        "solution": "Backend server is not running or not reachable. 1) Verify backend is running: curl http://localhost:3000. 2) Check proxy_pass URL is correct. 3) Check firewall isn't blocking. 4) Review nginx error logs."
+      },
+      {
+        "issue": "Changes to config don't take effect",
+        "solution": "You must reload Nginx after config changes: sudo nginx -s reload. Always test config first: sudo nginx -t"
+      },
+      {
+        "issue": "Permission denied errors",
+        "solution": "Nginx may need permissions to read files or bind to ports <1024. Run as sudo (Linux) or administrator (Windows), or change ports to >1024."
+      }
+    ]
+  }
+}

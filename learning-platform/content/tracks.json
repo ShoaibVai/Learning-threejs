@@ -1,0 +1,18 @@
+{
+  "tracks": [
+    {
+      "id": "server-networking",
+      "title": "Server & Networking",
+      "slug": "server-networking",
+      "description": "Master the art of hosting, securing, and maintaining servers. Learn how to make your local machine publicly accessible, implement security best practices, and maintain robust server infrastructure.",
+      "icon": "🌐"
+    },
+    {
+      "id": "web-game-dev",
+      "title": "Web Game Development",
+      "slug": "web-game-dev",
+      "description": "Build engaging web games from scratch. Learn Canvas fundamentals, game loops, physics, multiplayer networking, and deployment strategies for production-ready web games.",
+      "icon": "🎮"
+    }
+  ]
+}

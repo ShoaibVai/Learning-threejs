@@ -1,0 +1,33 @@
+{
+  "id": "web-game-dev",
+  "modules": [
+    {
+      "id": "canvas-fundamentals",
+      "title": "Canvas & Game Loop Fundamentals",
+      "slug": "canvas-fundamentals",
+      "summary": "Master HTML5 Canvas API, understand the game loop pattern, handle frame timing, and create your first interactive canvas application.",
+      "order": 1
+    },
+    {
+      "id": "game-mechanics",
+      "title": "Core Game Mechanics & Physics",
+      "slug": "game-mechanics",
+      "summary": "Implement collision detection, basic physics, input handling, and sprite management for interactive gameplay.",
+      "order": 2
+    },
+    {
+      "id": "architecture-optimization",
+      "title": "Game Architecture & Performance",
+      "slug": "architecture-optimization",
+      "summary": "Build scalable game architecture with state management, scene systems, and performance optimization techniques.",
+      "order": 3
+    },
+    {
+      "id": "multiplayer-deployment",
+      "title": "Multiplayer & Deployment",
+      "slug": "multiplayer-deployment",
+      "summary": "Add realtime multiplayer using WebSockets, and deploy your game to production with CDN and caching strategies.",
+      "order": 4
+    }
+  ]
+}

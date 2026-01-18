@@ -1,0 +1,193 @@
+{
+  "id": "local-server-basics",
+  "title": "Local Server Fundamentals",
+  "slug": "local-server-basics",
+  "overview": "Understanding how servers work on your local machine, the localhost concept, and basic HTTP server setup. You'll learn to run a simple web server and access it from your local network.",
+  "objectives": [
+    "Understand localhost, loopback interface (127.0.0.1), and how servers listen on ports",
+    "Create and run a basic Node.js HTTP server",
+    "Access your local server from other devices on your LAN",
+    "Identify your local IP address and understand private IP ranges"
+  ],
+  "prerequisites": [
+    "Basic command line knowledge",
+    "Node.js and npm installed",
+    "Basic understanding of HTTP"
+  ],
+  "durationMinutes": 45,
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Understanding Localhost and Network Interfaces",
+      "content": "# Understanding Localhost\n\nWhen you run a server on your computer, it typically listens on a **network interface**. The most common is:\n\n- **localhost (127.0.0.1)**: The loopback interface, only accessible from your own machine\n- **0.0.0.0**: All network interfaces, making your server accessible on your LAN\n- **Your LAN IP (e.g., 192.168.1.x)**: Your private IP address on your local network\n\n## How Servers Listen\n\nA server \"listens\" on a **port** (like 3000, 8080, or 80). Think of ports as different doors into your computer:\n\n```\nhttp://localhost:3000 → Your machine, port 3000\nhttp://192.168.1.100:3000 → Same server, but accessible from LAN\n```\n\n## Private IP Ranges\n\nThese IP ranges are reserved for private networks (not routable on the internet):\n- **10.0.0.0 – 10.255.255.255**\n- **172.16.0.0 – 172.31.255.255**\n- **192.168.0.0 – 192.168.255.255**\n\nYour router assigns you one of these IPs via DHCP.",
+      "links": []
+    },
+    {
+      "type": "guide",
+      "title": "Creating Your First Server",
+      "content": "# Building a Simple Node.js Server\n\nLet's create a basic HTTP server:\n\n```javascript\nconst http = require('http');\n\nconst server = http.createServer((req, res) => {\n  res.writeHead(200, { 'Content-Type': 'text/html' });\n  res.end('<h1>Hello from my local server!</h1>');\n});\n\nconst PORT = 3000;\nserver.listen(PORT, '0.0.0.0', () => {\n  console.log(`Server running on http://localhost:${PORT}`);\n});\n```\n\n**Key Points:**\n- `0.0.0.0` makes the server accessible on all network interfaces\n- Use `localhost` for local-only access\n- Port 3000 is common for development (ports below 1024 require sudo/admin)\n\n## Finding Your Local IP\n\n**Windows:**\n```bash\nipconfig\n```\nLook for \"IPv4 Address\" under your active network adapter.\n\n**macOS/Linux:**\n```bash\nifconfig  # or: ip addr show\n```\nLook for `inet` under your active interface (e.g., `en0` or `eth0`).",
+      "links": []
+    }
+  ],
+  "resources": [
+    {
+      "title": "Node.js HTTP Module Documentation",
+      "url": "https://nodejs.org/api/http.html",
+      "type": "documentation",
+      "description": "Official Node.js documentation for creating HTTP servers"
+    },
+    {
+      "title": "Understanding TCP/IP and Ports",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-a-computer-port/",
+      "type": "article",
+      "description": "Beginner-friendly explanation of network ports"
+    },
+    {
+      "title": "Private IP Address Ranges (RFC 1918)",
+      "url": "https://datatracker.ietf.org/doc/html/rfc1918",
+      "type": "documentation",
+      "description": "Technical specification for private network addresses"
+    }
+  ],
+  "miniProject": {
+    "title": "LAN-Accessible Web Server",
+    "description": "Create a personal dashboard server that displays system information and is accessible from any device on your local network.",
+    "estimatedTime": 30,
+    "steps": [
+      "Create a new Node.js project with `npm init -y`",
+      "Build an HTTP server that listens on 0.0.0.0:3000",
+      "Serve an HTML page showing: server hostname, current time, request count",
+      "Find your local IP address using ipconfig/ifconfig",
+      "Access your server from another device on your network (phone, tablet, another computer)",
+      "Add a simple API endpoint `/api/info` that returns JSON with server stats"
+    ],
+    "deliverables": [
+      "A running Node.js server accessible via LAN",
+      "HTML dashboard showing live server information",
+      "Documentation of your local IP and how you accessed it from another device"
+    ],
+    "rubric": [
+      "Server starts without errors (2 pts)",
+      "Accessible via localhost and LAN IP (3 pts)",
+      "Dashboard displays dynamic information (3 pts)",
+      "API endpoint returns valid JSON (2 pts)"
+    ],
+    "starterPath": "/practice/server-starters/express-basic"
+  },
+  "quiz": {
+    "passingScore": 70,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "What does 127.0.0.1 refer to?",
+        "options": [
+          "Your router's IP address",
+          "The loopback address (localhost)",
+          "Your public IP address",
+          "Your ISP's DNS server"
+        ],
+        "correctAnswer": "The loopback address (localhost)",
+        "explanation": "127.0.0.1 is the loopback address, allowing your computer to talk to itself. It's never exposed to the network.",
+        "points": 10
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "Which IP address range is reserved for private networks?",
+        "options": [
+          "8.8.8.0 - 8.8.8.255",
+          "192.168.0.0 - 192.168.255.255",
+          "1.1.1.0 - 1.1.1.255",
+          "172.32.0.0 - 172.32.255.255"
+        ],
+        "correctAnswer": "192.168.0.0 - 192.168.255.255",
+        "explanation": "192.168.x.x is one of the three private IP ranges defined in RFC 1918. The others are 10.x.x.x and 172.16.x.x-172.31.x.x.",
+        "points": 10
+      },
+      {
+        "id": "q3",
+        "type": "single",
+        "question": "What does listening on 0.0.0.0 mean?",
+        "options": [
+          "The server only accepts connections from localhost",
+          "The server is turned off",
+          "The server listens on all available network interfaces",
+          "The server only accepts connections from the internet"
+        ],
+        "correctAnswer": "The server listens on all available network interfaces",
+        "explanation": "0.0.0.0 is a meta-address that tells the server to bind to all network interfaces (localhost, LAN, etc.).",
+        "points": 15
+      },
+      {
+        "id": "q4",
+        "type": "multiple",
+        "question": "Which of the following are true about ports? (Select all that apply)",
+        "options": [
+          "Ports below 1024 are called 'well-known ports'",
+          "You can run multiple servers on the same port simultaneously",
+          "Port 80 is the default for HTTP",
+          "Port numbers range from 0 to 65535"
+        ],
+        "correctAnswer": ["Ports below 1024 are called 'well-known ports'", "Port 80 is the default for HTTP", "Port numbers range from 0 to 65535"],
+        "explanation": "Ports 0-1023 are well-known/system ports. HTTP uses 80, HTTPS uses 443. Ports range from 0-65535. Only one process can bind to a port at a time.",
+        "points": 20
+      },
+      {
+        "id": "q5",
+        "type": "single",
+        "question": "How can you find your local IP address on Windows?",
+        "options": [
+          "ipconfig",
+          "ifconfig",
+          "netstat",
+          "ping localhost"
+        ],
+        "correctAnswer": "ipconfig",
+        "explanation": "ipconfig displays network configuration on Windows. On Linux/macOS, you'd use ifconfig or 'ip addr show'.",
+        "points": 10
+      },
+      {
+        "id": "q6",
+        "type": "short-answer",
+        "question": "Explain the difference between localhost and 0.0.0.0 when starting a server.",
+        "correctAnswer": "localhost (127.0.0.1) only allows connections from the same machine, while 0.0.0.0 binds to all network interfaces, making the server accessible from other devices on the network.",
+        "explanation": "This is a key concept: localhost is loopback-only, while 0.0.0.0 opens your server to LAN access. For production, you'd typically use a specific interface or add firewall rules.",
+        "points": 35
+      }
+    ]
+  },
+  "environment": {
+    "setupSteps": [
+      "Install Node.js LTS from nodejs.org (includes npm)",
+      "Verify installation: node --version && npm --version",
+      "Create a project directory: mkdir my-server && cd my-server",
+      "Initialize npm: npm init -y",
+      "Create server.js with the basic HTTP server code",
+      "Run with: node server.js"
+    ],
+    "commands": [
+      "node --version  # Check Node.js installation",
+      "npm --version   # Check npm installation",
+      "ipconfig        # Windows: find local IP",
+      "ifconfig        # macOS/Linux: find local IP",
+      "netstat -an | findstr :3000  # Windows: check if port is in use",
+      "lsof -i :3000   # macOS/Linux: check if port is in use"
+    ],
+    "troubleshooting": [
+      {
+        "issue": "Error: listen EADDRINUSE - Port already in use",
+        "solution": "Another process is using that port. Change the port number in your code, or find and kill the process using that port (netstat on Windows, lsof on macOS/Linux)."
+      },
+      {
+        "issue": "Cannot access server from another device on LAN",
+        "solution": "1) Check your firewall allows incoming connections on that port. 2) Ensure you're using 0.0.0.0, not localhost. 3) Verify both devices are on the same network. 4) Use your LAN IP (192.168.x.x), not localhost."
+      },
+      {
+        "issue": "Error: Cannot find module 'http'",
+        "solution": "The 'http' module is built into Node.js. This error usually means Node.js isn't installed properly. Reinstall Node.js from nodejs.org."
+      }
+    ]
+  }
+}

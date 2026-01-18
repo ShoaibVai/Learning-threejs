@@ -1,0 +1,33 @@
+{
+  "id": "server-networking",
+  "modules": [
+    {
+      "id": "hosting-basics",
+      "title": "Hosting Your Local Machine Publicly",
+      "slug": "hosting-basics",
+      "summary": "Learn how to expose your local development server to the internet, understanding networking fundamentals, port forwarding, DNS, and reverse proxies.",
+      "order": 1
+    },
+    {
+      "id": "server-security",
+      "title": "Server Security Essentials",
+      "slug": "server-security",
+      "summary": "Protect your server with firewall rules, SSH hardening, web security headers, and secret management best practices.",
+      "order": 2
+    },
+    {
+      "id": "server-maintenance",
+      "title": "Server Maintenance & Monitoring",
+      "slug": "server-maintenance",
+      "summary": "Keep your servers healthy with monitoring, logging, backup strategies, and incident response procedures.",
+      "order": 3
+    },
+    {
+      "id": "deployment-ops",
+      "title": "Deployment & Operations",
+      "slug": "deployment-ops",
+      "summary": "Master deployment workflows, rollback strategies, CI/CD basics, and production readiness checklists.",
+      "order": 4
+    }
+  ]
+}

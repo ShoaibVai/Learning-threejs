@@ -1,0 +1,61 @@
+{
+  "id": "https-ssl",
+  "title": "HTTPS & SSL/TLS with Let's Encrypt",
+  "slug": "https-ssl",
+  "overview": "Secure your server with HTTPS using free SSL certificates from Let's Encrypt. Learn about SSL/TLS, certificate management, and automatic renewal.",
+  "objectives": [
+    "Understand SSL/TLS and why HTTPS is essential",
+    "Obtain free SSL certificates from Let's Encrypt",
+    "Configure Nginx to serve HTTPS traffic",
+    "Set up automatic certificate renewal"
+  ],
+  "prerequisites": ["Completed 'Reverse Proxy with Nginx'", "Domain name pointing to your server", "Port 80/443 accessible"],
+  "durationMinutes": 60,
+  "order": 2,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Understanding HTTPS and SSL/TLS",
+      "content": "# What is HTTPS?\n\nHTTPS = HTTP + TLS (Transport Layer Security)\n\n## Why HTTPS?\n\n1. **Encryption**: Data is encrypted in transit\n2. **Authentication**: Verifies server identity\n3. **Integrity**: Prevents tampering\n4. **Trust**: Browsers show secure lock icon\n5. **SEO**: Google ranks HTTPS sites higher\n6. **Required for modern features**: PWAs, Service Workers, Geolocation API\n\n## SSL/TLS Certificates\n\nA certificate contains:\n- Public key\n- Server identity (domain)\n- Issuer (Certificate Authority)\n- Validity period\n\n## Let's Encrypt\n\n- **Free** SSL certificates\n- **Automated** via ACME protocol\n- **Trusted** by all major browsers\n- **90-day validity** (encourages automation)\n\n## How It Works\n\n```\nCertbot (ACME client)\n  ↓\nRequests certificate from Let's Encrypt\n  ↓\nLet's Encrypt verifies domain ownership\n  ↓\nIssues certificate\n  ↓\nCertbot installs certificate in Nginx\n```"
+    }
+  ],
+  "resources": [
+    {"title": "Let's Encrypt", "url": "https://letsencrypt.org/", "type": "tool"},
+    {"title": "Certbot", "url": "https://certbot.eff.org/", "type": "tool"},
+    {"title": "SSL Labs Server Test", "url": "https://www.ssllabs.com/ssltest/", "type": "tool"}
+  ],
+  "miniProject": {
+    "title": "Enable HTTPS on Your Server",
+    "description": "Install SSL certificate and configure HTTPS with auto-renewal",
+    "estimatedTime": 45,
+    "steps": [
+      "Install Certbot", 
+      "Obtain SSL certificate: certbot --nginx -d yourdomain.com",
+      "Test HTTPS access",
+      "Configure HTTP to HTTPS redirect",
+      "Set up automatic renewal (cron job)",
+      "Test SSL configuration with SSL Labs"
+    ],
+    "deliverables": ["Working HTTPS site", "Auto-renewal configured", "SSL Labs A+ rating"],
+    "rubric": ["Certificate installed (3 pts)", "HTTPS working (3 pts)", "HTTP redirects to HTTPS (2 pts)", "Auto-renewal working (2 pts)"],
+    "starterPath": "/practice/server-starters/https-setup"
+  },
+  "quiz": {
+    "passingScore": 70,
+    "questions": [
+      {"id": "q1", "type": "single", "question": "What does the 'S' in HTTPS stand for?", "options": ["Server", "Secure", "System", "Standard"], "correctAnswer": "Secure", "explanation": "HTTPS stands for HTTP Secure, using TLS for encryption.", "points": 10},
+      {"id": "q2", "type": "single", "question": "How long are Let's Encrypt certificates valid?", "options": ["30 days", "90 days", "1 year", "Forever"], "correctAnswer": "90 days", "explanation": "Let's Encrypt issues 90-day certificates to encourage automation.", "points": 10},
+      {"id": "q3", "type": "multiple", "question": "What does HTTPS provide?", "options": ["Encryption", "Authentication", "Data compression", "Integrity"], "correctAnswer": ["Encryption", "Authentication", "Integrity"], "explanation": "HTTPS provides encryption, authentication, and integrity, but not compression.", "points": 20},
+      {"id": "q4", "type": "single", "question": "Which tool is commonly used to obtain Let's Encrypt certificates?", "options": ["OpenSSL", "Certbot", "Apache", "Docker"], "correctAnswer": "Certbot", "explanation": "Certbot is the official ACME client for Let's Encrypt.", "points": 15},
+      {"id": "q5", "type": "short-answer", "question": "Why does Let's Encrypt use 90-day validity instead of 1 year?", "correctAnswer": "To encourage automation and minimize risk if a certificate is compromised", "explanation": "Shorter validity periods improve security and encourage automated renewal.", "points": 45}
+    ]
+  },
+  "environment": {
+    "setupSteps": ["Install Certbot: sudo apt install certbot python3-certbot-nginx", "Ensure port 80/443 are open", "Have domain pointing to your server"],
+    "commands": ["sudo certbot --nginx -d yourdomain.com", "sudo certbot renew --dry-run", "sudo systemctl status certbot.timer"],
+    "troubleshooting": [
+      {"issue": "Challenge failed", "solution": "Ensure domain points to server and port 80 is accessible"},
+      {"issue": "Renewal fails", "solution": "Check certbot logs: /var/log/letsencrypt/letsencrypt.log"}
+    ]
+  }
+}

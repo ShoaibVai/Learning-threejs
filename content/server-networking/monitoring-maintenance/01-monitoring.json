@@ -3,7 +3,14 @@
   "title": "Monitoring, Logs & Maintenance",
   "slug": "monitoring-maintenance",
   "overview": "Maintain visibility and health of your services.",
+  "durationMinutes": 45,
   "order": 1,
+  "objectives": [
+    "Monitor system resources",
+    "Analyze access and error logs",
+    "Detect anomalies"
+  ],
+  "prerequisites": [],
   "sections": [
     {
       "type": "reading",
@@ -20,5 +27,23 @@
       "title": "References",
       "content": "# References\n\n* Prometheus Docs\n* Grafana Labs"
     }
-  ]
+  ],
+  "resources": [],
+  "miniProject": {
+    "title": "Health Check",
+    "description": "Check the vitals of your local machine.",
+    "steps": [],
+    "deliverables": [],
+    "rubric": [],
+    "estimatedTime": 15
+  },
+  "quiz": {
+    "questions": [],
+    "passingScore": 0
+  },
+  "environment": {
+    "setupSteps": [],
+    "commands": [],
+    "troubleshooting": []
+  }
 }

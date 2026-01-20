@@ -3,7 +3,14 @@
   "title": "Exposing a Local Machine Publicly",
   "slug": "exposing-local-machine",
   "overview": "Understand how and why machines become publicly reachable.",
+  "durationMinutes": 35,
   "order": 1,
+  "objectives": [
+    "Understand port forwarding",
+    "Map external to internal ports",
+    "Recognize security risks"
+  ],
+  "prerequisites": [],
   "sections": [
     {
       "type": "reading",
@@ -25,5 +32,23 @@
       "title": "References",
       "content": "# References\n\n* Router NAT Documentation\n* ISP CGNAT Explanations"
     }
-  ]
+  ],
+  "resources": [],
+  "miniProject": {
+    "title": "Temporary Exposé",
+    "description": "Briefly expose a safe service and test external access.",
+    "steps": [],
+    "deliverables": [],
+    "rubric": [],
+    "estimatedTime": 30
+  },
+  "quiz": {
+    "questions": [],
+    "passingScore": 0
+  },
+  "environment": {
+    "setupSteps": [],
+    "commands": [],
+    "troubleshooting": []
+  }
 }

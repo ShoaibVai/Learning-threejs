@@ -3,7 +3,14 @@
   "title": "HTTPS, TLS & Certificates",
   "slug": "https-tls",
   "overview": "Secure data in transit.",
+  "durationMinutes": 45,
   "order": 1,
+  "objectives": [
+    "Understand TLS encryption",
+    "Learn about Certificate Authorities",
+    "Know why HTTPS is mandatory"
+  ],
+  "prerequisites": [],
   "sections": [
     {
       "type": "reading",
@@ -20,5 +27,23 @@
       "title": "References",
       "content": "# References\n\n* Let’s Encrypt Docs\n* SSL Labs\n* RFC 8446 (TLS 1.3)"
     }
-  ]
+  ],
+  "resources": [],
+  "miniProject": {
+    "title": "Security Check",
+    "description": "Analyze the certificate of a secured website.",
+    "steps": [],
+    "deliverables": [],
+    "rubric": [],
+    "estimatedTime": 20
+  },
+  "quiz": {
+    "questions": [],
+    "passingScore": 0
+  },
+  "environment": {
+    "setupSteps": [],
+    "commands": [],
+    "troubleshooting": []
+  }
 }

@@ -3,7 +3,14 @@
   "title": "Domain Names & DNS",
   "slug": "domain-names-dns",
   "overview": "Control how humans reach servers.",
+  "durationMinutes": 30,
   "order": 1,
+  "objectives": [
+    "Understand DNS records (A, CNAME)",
+    "Learn about TTL and caching",
+    "Simulate DNS locally"
+  ],
+  "prerequisites": [],
   "sections": [
     {
       "type": "reading",
@@ -25,5 +32,23 @@
       "title": "References",
       "content": "# References\n\n* ICANN DNS Primer\n* Cloudflare DNS Guides"
     }
-  ]
+  ],
+  "resources": [],
+  "miniProject": {
+    "title": "Fake Domain",
+    "description": "Create a local alias for your development server.",
+    "steps": [],
+    "deliverables": [],
+    "rubric": [],
+    "estimatedTime": 15
+  },
+  "quiz": {
+    "questions": [],
+    "passingScore": 0
+  },
+  "environment": {
+    "setupSteps": [],
+    "commands": [],
+    "troubleshooting": []
+  }
 }

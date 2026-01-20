@@ -3,7 +3,14 @@
   "title": "Production Practices & Expert Concepts",
   "slug": "production-practices",
   "overview": "Think like a production engineer.",
+  "durationMinutes": 60,
   "order": 1,
+  "objectives": [
+    "Understand scaling concepts",
+    "Learn about zero-downtime deployment",
+    "Adopt expert operations mindset"
+  ],
+  "prerequisites": [],
   "sections": [
     {
       "type": "reading",
@@ -20,5 +27,23 @@
       "title": "Final Outcome",
       "content": "# Final Outcome\n\nAfter completing this course, you can:\n\n* Host servers confidently\n* Expose services safely\n* Secure infrastructure properly\n* Maintain long-running systems\n* Think like a production engineer"
     }
-  ]
+  ],
+  "resources": [],
+  "miniProject": {
+    "title": "Architecture Design",
+    "description": "Sketch a robust production architecture.",
+    "steps": [],
+    "deliverables": [],
+    "rubric": [],
+    "estimatedTime": 45
+  },
+  "quiz": {
+    "questions": [],
+    "passingScore": 0
+  },
+  "environment": {
+    "setupSteps": [],
+    "commands": [],
+    "troubleshooting": []
+  }
 }

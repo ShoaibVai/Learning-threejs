@@ -1,0 +1,29 @@
+{
+  "id": "backups-incident-response",
+  "title": "Backups, Recovery & Incident Response",
+  "slug": "backups-incident-response",
+  "overview": "Strategies for data safety and disaster recovery.",
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Backup & Response",
+      "content": "# Learn\n\n* Backup types\n* Restore testing\n* Incident response flow"
+    },
+    {
+      "type": "guide",
+      "title": "Practice: Backup & Restore",
+      "content": "# Practice\n\nBackup:\n\n```bash\ntar -czvf backup.tar.gz /var/www\n```\n\nRestore:\n\n```bash\ntar -xzvf backup.tar.gz\n```"
+    },
+    {
+      "type": "quiz",
+      "title": "Test Yourself",
+      "content": "# Test Yourself\n\n* Why untested backups are useless?\n* What is RTO vs RPO?"
+    },
+    {
+      "type": "reading",
+      "title": "References",
+      "content": "# References\n\n* NIST Backup Guidelines"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "local-hosting-basics",
+  "title": "Local Servers & Hosting Basics",
+  "slug": "local-hosting-basics",
+  "overview": "Run servers correctly, not accidentally.",
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Local Tools",
+      "content": "# Learn\n\n### localhost vs 0.0.0.0\n\n* `localhost`: Local machine only\n* `0.0.0.0`: All network interfaces\n\nIf you want LAN or public access, **0.0.0.0 is mandatory**."
+    },
+    {
+      "type": "guide",
+      "title": "Practice: Build a Local Server",
+      "content": "# Practice — Build a Local Server\n\n### Initialize Project\n\n```bash\nmkdir local-server\ncd local-server\nnpm init -y\nnpm install express\n```\n\n### Create `server.js`\n\n```js\nconst express = require(\"express\");\nconst app = express();\n\napp.get(\"/\", (req, res) => {\n  res.send(\"Server is running\");\n});\n\napp.listen(3000, \"0.0.0.0\", () => {\n  console.log(\"Listening on port 3000\");\n});\n```\n\nRun:\n\n```bash\nnode server.js\n```\n\nTest:\n\n* [http://localhost:3000](http://localhost:3000)\n* http://<LAN-IP>:3000"
+    },
+    {
+      "type": "quiz",
+      "title": "Test Yourself",
+      "content": "# Test Yourself\n\n* Why does binding matter?\n* Why does localhost fail on other devices?"
+    },
+    {
+      "type": "reading",
+      "title": "References",
+      "content": "# References\n\n* Node.js Documentation\n* Express.js Guide"
+    }
+  ]
+}

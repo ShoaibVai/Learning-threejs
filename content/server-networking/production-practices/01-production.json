@@ -1,0 +1,24 @@
+{
+  "id": "production-practices",
+  "title": "Production Practices & Expert Concepts",
+  "slug": "production-practices",
+  "overview": "Think like a production engineer.",
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Real-World Ops",
+      "content": "# Learn\n\n* VPS vs cloud vs bare metal\n* Scaling concepts\n* Zero-downtime deployment\n* Blue/green deployments\n* Infrastructure as Code (intro)"
+    },
+    {
+      "type": "reading",
+      "title": "Expert Mindset Rules",
+      "content": "# Expert Mindset Rules\n\n* Assume breach\n* Monitor everything\n* Automate safely\n* Document incidents\n* Never trust client input"
+    },
+    {
+      "type": "reading",
+      "title": "Final Outcome",
+      "content": "# Final Outcome\n\nAfter completing this course, you can:\n\n* Host servers confidently\n* Expose services safely\n* Secure infrastructure properly\n* Maintain long-running systems\n* Think like a production engineer"
+    }
+  ]
+}

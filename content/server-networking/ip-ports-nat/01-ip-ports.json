@@ -1,0 +1,29 @@
+{
+  "id": "ip-ports-nat",
+  "title": "IP Addresses, Ports & NAT",
+  "slug": "ip-ports-nat",
+  "overview": "Understand why servers are not reachable by default.",
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "IP Addresses, Ports & NAT",
+      "content": "# Learn\n\n### IP Addresses\n- Public IP: Visible on the internet\n- Private IP: Internal network only\n\nPrivate IP ranges:\n- 192.168.0.0/16\n- 10.0.0.0/8\n- 172.16.0.0–172.31.255.255\n\n### Ports\nPorts identify services:\n- 80 → HTTP\n- 443 → HTTPS\n- 22 → SSH\n\nMultiple services can run on one IP using different ports.\n\n### NAT (Network Address Translation)\nRouters:\n- Hide internal devices\n- Block inbound traffic\n- Translate public ↔ private IPs\n\nThis is why **port forwarding is required**."
+    },
+    {
+      "type": "guide",
+      "title": "Practice: Inspect Your Network",
+      "content": "# Practice\n\n### Inspect Your Network\n```bash\nipconfig        # Windows\nifconfig        # Linux/macOS\n```\n\nFind public IP:\n\n```bash\ncurl ifconfig.me\n```\n\nList listening ports:\n\n```bash\nnetstat -ano    # Windows\nss -tulpn       # Linux\n```"
+    },
+    {
+      "type": "quiz",
+      "title": "Test Yourself",
+      "content": "# Test Yourself\n\n* Why can’t private IPs be accessed publicly?\n* What does NAT protect you from?"
+    },
+    {
+      "type": "reading",
+      "title": "References",
+      "content": "# References\n\n* RFC 1918 (Private IPs)\n* Cloudflare NAT Explained"
+    }
+  ]
+}

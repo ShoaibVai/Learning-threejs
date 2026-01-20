@@ -1,0 +1,29 @@
+{
+  "id": "server-security-fundamentals",
+  "title": "Server Security Fundamentals",
+  "slug": "server-security-fundamentals",
+  "overview": "Stop automated attacks.",
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Common Attacks",
+      "content": "# Learn\n\n### Common Attacks\n\n* Port scanning\n* Brute-force SSH\n* Exploit bots\n* Credential stuffing"
+    },
+    {
+      "type": "guide",
+      "title": "Practice: Firewall (Linux Example)",
+      "content": "# Practice — Firewall (Linux Example)\n\n```bash\nsudo ufw allow ssh\nsudo ufw allow 80\nsudo ufw allow 443\nsudo ufw enable\nsudo ufw status\n```"
+    },
+    {
+      "type": "quiz",
+      "title": "Test Yourself",
+      "content": "# Test Yourself\n\n* Why “security by obscurity” fails?\n* Why default-deny is safer?"
+    },
+    {
+      "type": "reading",
+      "title": "References",
+      "content": "# References\n\n* OWASP Top 10\n* Linux UFW Documentation"
+    }
+  ]
+}

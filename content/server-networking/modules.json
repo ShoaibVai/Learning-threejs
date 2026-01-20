@@ -2,32 +2,88 @@
   "id": "server-networking",
   "modules": [
     {
-      "id": "hosting-basics",
-      "title": "Hosting Your Local Machine Publicly",
-      "slug": "hosting-basics",
-      "summary": "Learn how to expose your local development server to the internet, understanding networking fundamentals, port forwarding, DNS, and reverse proxies.",
+      "id": "foundations-networking",
+      "title": "Foundations of Servers & Networking",
+      "slug": "foundations-networking",
+      "summary": "Build a mental model of how the internet works, understanding client-server architecture and HTTP basics.",
       "order": 1
     },
     {
-      "id": "server-security",
-      "title": "Server Security Essentials",
-      "slug": "server-security",
-      "summary": "Protect your server with firewall rules, SSH hardening, web security headers, and secret management best practices.",
+      "id": "ip-ports-nat",
+      "title": "IP Addresses, Ports & NAT",
+      "slug": "ip-ports-nat",
+      "summary": "Understand network identification, why servers aren't reachable by default, and how NAT works.",
       "order": 2
     },
     {
-      "id": "server-maintenance",
-      "title": "Server Maintenance & Monitoring",
-      "slug": "server-maintenance",
-      "summary": "Keep your servers healthy with monitoring, logging, backup strategies, and incident response procedures.",
+      "id": "local-hosting-basics",
+      "title": "Local Servers & Hosting Basics",
+      "slug": "local-hosting-basics",
+      "summary": "Learn to run servers correctly on your machine, distinguishing between localhost and 0.0.0.0.",
       "order": 3
     },
     {
-      "id": "deployment-ops",
-      "title": "Deployment & Operations",
-      "slug": "deployment-ops",
-      "summary": "Master deployment workflows, rollback strategies, CI/CD basics, and production readiness checklists.",
+      "id": "exposing-local-machine",
+      "title": "Exposing a Local Machine Publicly",
+      "slug": "exposing-local-machine",
+      "summary": "Master port forwarding and understand the risks and mechanics of public exposure.",
       "order": 4
+    },
+    {
+      "id": "domain-names-dns",
+      "title": "Domain Names & DNS",
+      "slug": "domain-names-dns",
+      "summary": "Control how humans reach your servers using DNS records, TTL, and local simulations.",
+      "order": 5
+    },
+    {
+      "id": "reverse-proxies",
+      "title": "Reverse Proxies & Web Servers",
+      "slug": "reverse-proxies",
+      "summary": "Serve multiple services safely using reverse proxies like Nginx to hide internal ports.",
+      "order": 6
+    },
+    {
+      "id": "https-tls",
+      "title": "HTTPS, TLS & Certificates",
+      "slug": "https-tls",
+      "summary": "Secure data in transit with encryption, understanding TLS, certificates, and CAs.",
+      "order": 7
+    },
+    {
+      "id": "server-security-fundamentals",
+      "title": "Server Security Fundamentals",
+      "slug": "server-security-fundamentals",
+      "summary": "Defend against common attacks like port scanning using firewalls and best practices.",
+      "order": 8
+    },
+    {
+      "id": "server-hardening",
+      "title": "Advanced Server Hardening",
+      "slug": "server-hardening",
+      "summary": "Lock down your server with SSH keys, Fail2Ban, and least privilege principles.",
+      "order": 9
+    },
+    {
+      "id": "monitoring-maintenance",
+      "title": "Monitoring, Logs & Maintenance",
+      "slug": "monitoring-maintenance",
+      "summary": "Keep track of server health with resource monitoring and log analysis.",
+      "order": 10
+    },
+    {
+      "id": "backups-incident-response",
+      "title": "Backups, Recovery & Incident Response",
+      "slug": "backups-incident-response",
+      "summary": "Prepare for the worst with backup strategies and incident response plans.",
+      "order": 11
+    },
+    {
+      "id": "production-practices",
+      "title": "Production Practices & Expert Concepts",
+      "slug": "production-practices",
+      "summary": "Adopt expert mindsets for scaling, zero-downtime deployments, and infrastructure as code.",
+      "order": 12
     }
   ]
 }

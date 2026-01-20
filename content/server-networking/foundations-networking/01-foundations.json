@@ -1,0 +1,29 @@
+{
+  "id": "foundations-basics",
+  "title": "Foundations of Servers & Networking",
+  "slug": "foundations-basics",
+  "overview": "Build a mental model of how the internet works before touching hosting.",
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "What Is a Server?",
+      "content": "# Learn\n\n### What Is a Server?\nA server is a program that:\n- Listens on a network port\n- Receives requests\n- Sends responses\n\nA server is **not** defined by hardware — it is defined by **behavior**.\n\n### Client–Server Model\n- Client: Browser, app, game client\n- Server: Web server, API, database\n\nFlow:\n```\nClient → Request → Server → Response → Client\n```\n\n### How a Website Loads\n1. Browser resolves domain via DNS\n2. TCP connection established\n3. HTTP request sent\n4. Server processes request\n5. Response returned\n6. Browser renders content"
+    },
+    {
+      "type": "guide",
+      "title": "Practice: Inspect a Live Request",
+      "content": "# Practice\n\n### Inspect a Live Request\n1. Open browser DevTools\n2. Go to Network tab\n3. Visit any website\n4. Inspect:\n   - Request headers\n   - Status codes\n   - Remote address"
+    },
+    {
+      "type": "quiz",
+      "title": "Test Yourself",
+      "content": "# Test Yourself\n- What role does DNS play?\n- What happens before HTTP?\n- Why is TCP important?"
+    },
+    {
+       "type": "reading",
+       "title": "References",
+       "content": "# References\n- MDN: How the Web Works\n- Cloudflare Learning Center\n- RFC 2616 (HTTP)"
+    }
+  ]
+}

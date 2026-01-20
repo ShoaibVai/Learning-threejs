@@ -1,0 +1,19 @@
+{
+  "id": "server-hardening",
+  "title": "Advanced Server Hardening",
+  "slug": "server-hardening",
+  "overview": "Secure servers against advanced threats.",
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Hardening Techniques",
+      "content": "# Learn\n\n* Disable root login\n* SSH key authentication\n* Fail2Ban\n* Least privilege\n* Secrets management"
+    },
+    {
+      "type": "reading",
+      "title": "References",
+      "content": "# References\n\n* CIS Benchmarks\n* OpenSSH Security Docs"
+    }
+  ]
+}

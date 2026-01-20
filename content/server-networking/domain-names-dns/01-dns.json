@@ -1,0 +1,29 @@
+{
+  "id": "domain-names-dns",
+  "title": "Domain Names & DNS",
+  "slug": "domain-names-dns",
+  "overview": "Control how humans reach servers.",
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "DNS Records",
+      "content": "# Learn\n\n### DNS Records\n\n* A Record → Domain → IP\n* CNAME → Alias\n* TTL → Cache duration\n\nDNS is **cached heavily**, causing delayed updates."
+    },
+    {
+      "type": "guide",
+      "title": "Practice: Local DNS Simulation",
+      "content": "# Practice — Local DNS Simulation\n\nEdit hosts file:\n\n**Windows**\n\n```\nC:\\Windows\\System32\\drivers\\etc\\hosts\n```\n\nAdd:\n\n```\n127.0.0.1 mysite.local\n```\n\nTest:\n\n```\nhttp://mysite.local\n```"
+    },
+    {
+      "type": "quiz",
+      "title": "Test Yourself",
+      "content": "# Test Yourself\n\n* Why DNS changes propagate slowly?\n* What happens when TTL expires?"
+    },
+    {
+      "type": "reading",
+      "title": "References",
+      "content": "# References\n\n* ICANN DNS Primer\n* Cloudflare DNS Guides"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "exposing-local-machine",
+  "title": "Exposing a Local Machine Publicly",
+  "slug": "exposing-local-machine",
+  "overview": "Understand how and why machines become publicly reachable.",
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Port Forwarding",
+      "content": "# Learn\n\n### Port Forwarding\n\nMaps:\n\n```\nPublicIP:ExternalPort → PrivateIP:InternalPort\n```\n\nRouters block inbound traffic by default for safety."
+    },
+    {
+      "type": "guide",
+      "title": "Practice: Port Forwarding (Temporary)",
+      "content": "# Practice (Temporary & Controlled)\n\n1. Login to router admin panel\n2. Add port forwarding:\n\n   * External port: 8080\n   * Internal IP: local IP\n   * Internal port: 3000\n   * Protocol: TCP\n3. Test from mobile data:\n\n```\nhttp://<public-ip>:8080\n```\n\n⚠️ Disable after testing."
+    },
+    {
+      "type": "quiz",
+      "title": "Test Yourself",
+      "content": "# Test Yourself\n\n* Why external and internal ports differ?\n* What risks does port forwarding introduce?"
+    },
+    {
+      "type": "reading",
+      "title": "References",
+      "content": "# References\n\n* Router NAT Documentation\n* ISP CGNAT Explanations"
+    }
+  ]
+}

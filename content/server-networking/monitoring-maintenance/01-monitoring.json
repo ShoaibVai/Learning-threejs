@@ -1,0 +1,24 @@
+{
+  "id": "monitoring-maintenance",
+  "title": "Monitoring, Logs & Maintenance",
+  "slug": "monitoring-maintenance",
+  "overview": "Maintain visibility and health of your services.",
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Monitoring Basics",
+      "content": "# Learn\n\n* CPU, RAM, disk monitoring\n* Access vs error logs\n* Detecting anomalies"
+    },
+    {
+      "type": "guide",
+      "title": "Practice: Monitoring Tools",
+      "content": "# Practice\n\n```bash\ntop\nhtop\ndf -h\n```"
+    },
+    {
+      "type": "reading",
+      "title": "References",
+      "content": "# References\n\n* Prometheus Docs\n* Grafana Labs"
+    }
+  ]
+}

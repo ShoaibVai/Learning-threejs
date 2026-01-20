@@ -1,0 +1,24 @@
+{
+  "id": "https-tls",
+  "title": "HTTPS, TLS & Certificates",
+  "slug": "https-tls",
+  "overview": "Secure data in transit.",
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "TLS Encryption",
+      "content": "# Learn\n\n### TLS Does:\n\n* Encrypts traffic\n* Prevents MITM attacks\n* Verifies server identity\n\nHTTPS is **mandatory**, not optional."
+    },
+    {
+      "type": "reading",
+      "title": "TLS Concepts",
+      "content": "# Learn (Conceptual)\n\n* TLS handshake\n* Certificates\n* Certificate Authorities\n* Let’s Encrypt"
+    },
+    {
+      "type": "reading",
+      "title": "References",
+      "content": "# References\n\n* Let’s Encrypt Docs\n* SSL Labs\n* RFC 8446 (TLS 1.3)"
+    }
+  ]
+}

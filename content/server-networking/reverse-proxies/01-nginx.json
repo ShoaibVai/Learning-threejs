@@ -1,0 +1,29 @@
+{
+  "id": "reverse-proxies",
+  "title": "Reverse Proxies & Web Servers",
+  "slug": "reverse-proxies",
+  "overview": "Serve multiple services safely and cleanly.",
+  "order": 1,
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Reverse Proxy",
+      "content": "# Learn\n\n### Reverse Proxy\n\n* Accepts public traffic\n* Routes internally\n* Hides internal ports\n* Enables HTTPS\n\nCommon tools:\n\n* Nginx\n* Apache\n* Caddy"
+    },
+    {
+      "type": "guide",
+      "title": "Practice: Nginx Reverse Proxy",
+      "content": "# Practice — Nginx Reverse Proxy\n\nInstall:\n\n```bash\nsudo apt install nginx\n```\n\nConfig example:\n\n```nginx\nserver {\n  listen 80;\n  location / {\n    proxy_pass http://localhost:3000;\n  }\n}\n```\n\nReload:\n\n```bash\nsudo nginx -t\nsudo systemctl reload nginx\n```"
+    },
+    {
+      "type": "quiz",
+      "title": "Test Yourself",
+      "content": "# Test Yourself\n\n* Why not expose app ports directly?\n* How does proxy improve security?"
+    },
+    {
+      "type": "reading",
+      "title": "References",
+      "content": "# References\n\n* Nginx Official Docs\n* Mozilla Web Security Guidelines"
+    }
+  ]
+}

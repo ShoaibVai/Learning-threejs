@@ -3,40 +3,63 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background: 248, 250, 252;
+  --foreground: 15, 23, 42;
+  --primary: 59, 130, 246;
+  --primary-foreground: 255, 255, 255;
+  --card: 255, 255, 255;
+  --card-foreground: 15, 23, 42;
+  --border: 226, 232, 240;
+  --radius: 0.75rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 2, 6, 23;
+    --foreground: 248, 250, 252;
+    --primary: 96, 165, 250;
+    --primary-foreground: 15, 23, 42;
+    --card: 15, 23, 42;
+    --card-foreground: 248, 250, 252;
+    --border: 30, 41, 59;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/70 dark:bg-slate-950/70 backdrop-blur-lg border-b border-white/20 dark:border-slate-800/50 supports-[backdrop-filter]:bg-white/60;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400;
+  }
+
+  .text-gradient-purple {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400;
+  }
 }
 
 @layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-white dark:ring-offset-slate-950;
+  }
+
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors;
+    @apply bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/25 active:scale-[0.98] h-11 px-8;
   }
 
-  .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold py-2 px-4 rounded-lg transition-colors;
+  .btn-ghost {
+    @apply hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 h-10 px-4;
   }
 
-  .card {
-    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700;
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-blue-500/30 dark:hover:border-blue-400/30;
   }
 }
 
@@ -47,31 +70,35 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #94a3b8;
 }
 
 /* Markdown styles */
 .markdown-content {
-  @apply prose dark:prose-invert max-w-none;
+  @apply prose dark:prose-invert max-w-none prose-slate prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-a:text-blue-600 dark:prose-a:text-blue-400 hover:prose-a:text-blue-500;
 }
 
 .markdown-content pre {
-  @apply bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto;
+  @apply bg-slate-900 dark:bg-slate-950 text-slate-50 rounded-xl p-4 overflow-x-auto border border-slate-700 shadow-md;
 }
 
 .markdown-content code {
-  @apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm;
+  @apply bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded-md text-sm font-mono text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700;
 }
 
 .markdown-content pre code {
-  @apply bg-transparent p-0;
+  @apply bg-transparent p-0 text-inherit border-none;
 }

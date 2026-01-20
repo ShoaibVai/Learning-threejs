@@ -1,0 +1,68 @@
+{
+  "id": "assets-loading",
+  "title": "Assets, Audio & Loading",
+  "slug": "assets-loading",
+  "overview": "Avoid broken visuals and audio lag by preloading assets properly.",
+  "order": 1,
+  "durationMinutes": 20,
+  "objectives": [
+    "Load images asynchronously",
+    "Preload audio files",
+    "Understand why rendering before loading causes bugs"
+  ],
+  "prerequisites": ["Canvas Module"],
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Asset Loading Problems",
+      "content": "Images and Audio take time to load from disk/network. If you try `ctx.drawImage(img)` immediately, nothing will appear (or it may throw an error)."
+    },
+    {
+      "type": "practice",
+      "title": "Image Loader",
+      "content": "Use the `onload` callback:\n```js\nconst img = new Image();\nimg.src = 'player.png';\nimg.onload = () => { gameLoop(); };\n```"
+    }
+  ],
+  "quiz": {
+    "passingScore": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "Why does audio lag on first play?",
+        "options": [
+          "It is buffering/loading",
+          "The volume is too low",
+          "Browser bug"
+        ],
+        "correctAnswer": "It is buffering/loading",
+        "explanation": "If audio is not preloaded, the browser must fetch/decode it the moment you click play.",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "What is the best strategy for assets?",
+        "options": [
+          "Load them when needed",
+          "Preload all critical assets before the game starts",
+          "Don't use assets"
+        ],
+        "correctAnswer": "Preload all critical assets before the game starts",
+        "points": 1
+      }
+    ]
+  },
+  "miniProject": {
+    "title": "Asset Manager",
+    "description": "Create a Promise-based asset loader.",
+    "steps": [
+      "Create a function `loadImage(url)` that returns a Promise",
+      "Use `Promise.all` to wait for multiple images",
+      "Start the game only after resolution"
+    ],
+    "deliverables": ["Loader Utility"],
+    "rubric": ["Game waits for images", "No flicker on start"],
+    "estimatedTime": 30
+  }
+}

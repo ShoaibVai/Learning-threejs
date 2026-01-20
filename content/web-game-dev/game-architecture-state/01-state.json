@@ -1,0 +1,64 @@
+{
+  "id": "game-state",
+  "title": "Game Architecture & State",
+  "slug": "game-state",
+  "overview": "Prevent spaghetti code by managing Game States effectively.",
+  "order": 1,
+  "durationMinutes": 25,
+  "objectives": [
+    "Understand State Machines",
+    "Implement Menu, Playing, and Game Over states",
+    "Modularize code based on state"
+  ],
+  "prerequisites": ["Basic Programming Logic"],
+  "sections": [
+    {
+      "type": "reading",
+      "title": "State Management",
+      "content": "Games usually track a high-level state string or enum:\n- `menu`\n- `playing`\n- `paused`\n- `gameover`\n\nYour loop should switch logic based on this state."
+    }
+  ],
+  "quiz": {
+    "passingScore": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "Why use a State Machine?",
+        "options": [
+          " To make the game faster",
+          "To cleanly separate logic (e.g., don't move player while in menu)",
+          "It is required by the browser"
+        ],
+        "correctAnswer": "To cleanly separate logic (e.g., don't move player while in menu)",
+        "explanation": "State machines prevent logic collisions, like shooting weapons while the game is paused.",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "Where should the state check happen?",
+        "options": [
+          "Only in render",
+          "In both update and render loops",
+          "Only in CSS"
+        ],
+        "correctAnswer": "In both update and render loops",
+        "points": 1
+      }
+    ]
+  },
+  "miniProject": {
+    "title": "State Flow",
+    "description": "Add a Start Screen and Game Over screen to your game.",
+    "steps": [
+      "Define `state` variable",
+      "If state is 'menu', draw text 'Press Enter to Start'",
+      "On Enter, switch to 'playing'",
+      "If 'gameover', show score and 'Press R to Restart'"
+    ],
+    "deliverables": ["Functioning State Flow"],
+    "rubric": ["Can cycle through Menu -> Game -> End -> Menu"],
+    "estimatedTime": 35
+  }
+}

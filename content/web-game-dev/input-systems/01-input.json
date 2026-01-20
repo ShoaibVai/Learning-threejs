@@ -1,0 +1,63 @@
+{
+  "id": "input-systems",
+  "title": "Input Systems",
+  "slug": "input-systems",
+  "overview": "Build reliable, responsive controls by treating input as state.",
+  "order": 1,
+  "durationMinutes": 20,
+  "objectives": [
+    "Differentiate between Input Events and Input State",
+    "Implement a keyboard state tracker",
+    "Handle multi-key presses"
+  ],
+  "prerequisites": ["Variables & Objects"],
+  "sections": [
+    {
+      "type": "reading",
+      "title": "State vs Events",
+      "content": "**Bad**: Reacting directly to `keydown` events (causes repeat delay).\n\n**Good**: Tracking key state in an object:\n```js\nconst keys = {};\nwindow.addEventListener('keydown', e => keys[e.key] = true);\n```\nThus, you can check `if (keys['ArrowRight'])` inside your update loop."
+    }
+  ],
+  "quiz": {
+    "passingScore": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "Why is tracking key state better than events for movement?",
+        "options": [
+          "It uses less code",
+          "It avoids the operating system's key-repeat delay",
+          "It is supported by more browsers"
+        ],
+        "correctAnswer": "It avoids the operating system's key-repeat delay",
+        "explanation": "Events trigger once, then wait, then repeat. Games need continuous checks every frame.",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "How does input state help multiplayer?",
+        "options": [
+          "It doesn't",
+          "You can send the state (inputs) to the server every tick",
+          "It encrypts the keys"
+        ],
+        "correctAnswer": "You can send the state (inputs) to the server every tick",
+        "points": 1
+      }
+    ]
+  },
+  "miniProject": {
+    "title": "Keyboard Controller",
+    "description": "Implement a WASD controller for your bouncing box.",
+    "steps": [
+      "Create `keys` object",
+      "Add event listeners for `keydown` and `keyup`",
+      "Modifiy velocity based on active keys in the update loop"
+    ],
+    "deliverables": ["Controllable Box"],
+    "rubric": ["Smooth movement", "Diagonal movement works"],
+    "estimatedTime": 20
+  }
+}

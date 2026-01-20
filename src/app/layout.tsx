@@ -21,31 +21,31 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} min-h-screen bg-background antialiased selection:bg-blue-100 dark:selection:bg-blue-900 overflow-x-hidden`}>
         <div className="fixed inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
-          <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-blue-400 opacity-20 blur-[100px] dark:bg-blue-900 animate-pulse"></div>
+          <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-primary/20 blur-[100px] animate-pulse"></div>
         </div>
         
         <nav className="sticky top-0 z-50 w-full glass shadow-sm">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center h-16">
               <Link href="/" className="flex items-center gap-3 group">
-                <div className="relative w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-lg group-hover:scale-105 transition-all duration-300 shadow-lg shadow-blue-500/20 overflow-hidden">
+                <div className="relative w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg group-hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/20 overflow-hidden">
                   <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-500 -skew-x-12 -translate-x-full"></div>
                   L
                 </div>
-                <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 dark:from-slate-100 dark:to-slate-400 group-hover:to-blue-600 dark:group-hover:to-blue-400 transition-all">
+                <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground group-hover:to-primary transition-all">
                   Learning Platform
                 </span>
               </Link>
               <div className="flex items-center gap-1 sm:gap-2">
-                <Link href="/search" className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
+                <Link href="/search" className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all">
                   <Search className="w-4 h-4" />
                   Search
                 </Link>
-                <Link href="/practice" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
+                <Link href="/practice" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all">
                   <PenTool className="w-4 h-4" />
                   Practice
                 </Link>
-                <Link href="/progress" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
+                <Link href="/progress" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all">
                   <LayoutDashboard className="w-4 h-4" />
                   Progress
                 </Link>

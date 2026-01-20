@@ -2,32 +2,88 @@
   "id": "web-game-dev",
   "modules": [
     {
-      "id": "canvas-fundamentals",
-      "title": "Canvas & Game Loop Fundamentals",
-      "slug": "canvas-fundamentals",
-      "summary": "Master HTML5 Canvas API, understand the game loop pattern, handle frame timing, and create your first interactive canvas application.",
+      "id": "web-games-vs-websites",
+      "title": "Module 1: Web Games vs Websites",
+      "slug": "web-games-vs-websites",
+      "summary": "Rewire your mindset from event-driven UI to frame-driven simulation.",
       "order": 1
     },
     {
-      "id": "game-mechanics",
-      "title": "Core Game Mechanics & Physics",
-      "slug": "game-mechanics",
-      "summary": "Implement collision detection, basic physics, input handling, and sprite management for interactive gameplay.",
+      "id": "rendering-game-loop",
+      "title": "Module 2: Rendering & The Game Loop",
+      "slug": "rendering-game-loop",
+      "summary": "Master the heart of every game utilizing requestAnimationFrame and delta time.",
       "order": 2
     },
     {
-      "id": "architecture-optimization",
-      "title": "Game Architecture & Performance",
-      "slug": "architecture-optimization",
-      "summary": "Build scalable game architecture with state management, scene systems, and performance optimization techniques.",
+      "id": "canvas-fundamentals",
+      "title": "Module 3: Canvas Fundamentals",
+      "slug": "canvas-fundamentals",
+      "summary": "Learn immediate mode rendering and the coordinate system of HTML5 Canvas.",
       "order": 3
     },
     {
-      "id": "multiplayer-deployment",
-      "title": "Multiplayer & Deployment",
-      "slug": "multiplayer-deployment",
-      "summary": "Add realtime multiplayer using WebSockets, and deploy your game to production with CDN and caching strategies.",
+      "id": "input-systems",
+      "title": "Module 4: Input Systems",
+      "slug": "input-systems",
+      "summary": "Build reliable, responsive controls by tracking input state instead of just events.",
       "order": 4
+    },
+    {
+      "id": "assets-audio-loading",
+      "title": "Module 5: Assets, Audio & Loading",
+      "slug": "assets-audio-loading",
+      "summary": "Handle asynchronous asset loading and audio latency to avoid broken visuals.",
+      "order": 5
+    },
+    {
+      "id": "game-architecture-state",
+      "title": "Module 6: Game Architecture & State",
+      "slug": "game-architecture-state",
+      "summary": "Prevent spaghetti code by implementing state management and proper game states.",
+      "order": 6
+    },
+    {
+      "id": "collision-physics",
+      "title": "Module 7: Collision Detection & Physics",
+      "slug": "collision-physics",
+      "summary": "Make games feel physical with AABB collision detection and bounding boxes.",
+      "order": 7
+    },
+    {
+      "id": "performance-optimization",
+      "title": "Module 8: Performance & Optimization",
+      "slug": "performance-optimization",
+      "summary": "Run smoothly on devices by understanding object pooling and garbage collection.",
+      "order": 8
+    },
+    {
+      "id": "multiplayer-fundamentals",
+      "title": "Module 9: Multiplayer Fundamentals",
+      "slug": "multiplayer-fundamentals",
+      "summary": "Understand real-time networking models like Client-Server and why to never trust the client.",
+      "order": 9
+    },
+    {
+      "id": "websockets-realtime",
+      "title": "Module 10: WebSockets & Real-Time Sync",
+      "slug": "websockets-realtime",
+      "summary": "Enable real-time communication with WebSockets, handling latency and tick rates.",
+      "order": 10
+    },
+    {
+      "id": "security-anti-cheat",
+      "title": "Module 11: Game Security & Anti-Cheat",
+      "slug": "security-anti-cheat",
+      "summary": "Prevent common exploits and hacks by validating state on the server.",
+      "order": 11
+    },
+    {
+      "id": "deployment-monetization",
+      "title": "Module 12: Deployment & Monetization",
+      "slug": "deployment-monetization",
+      "summary": "Ship your game, track analytics, and understand expert production practices.",
+      "order": 12
     }
   ]
 }

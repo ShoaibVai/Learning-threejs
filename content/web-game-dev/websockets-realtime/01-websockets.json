@@ -1,0 +1,69 @@
+{
+  "id": "websockets",
+  "title": "WebSockets & Real-Time Sync",
+  "slug": "websockets",
+  "overview": "Enable real-time communication using WebSockets.",
+  "order": 1,
+  "durationMinutes": 35,
+  "objectives": [
+    "Implement a WebSocket Server (Node.js)",
+    "Implement a WebSocket Client",
+    "Broadcast messages"
+  ],
+  "prerequisites": ["Node.js Basics"],
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Why WebSockets?",
+      "content": "HTTP is request-response (slow for games). WebSockets keep a permanent pipe open, allowing instant 2-way data flow."
+    },
+    {
+      "type": "practice",
+      "title": "Simple Chat/Game Server",
+      "content": "```js\nconst WebSocket = require('ws');\nconst wss = new WebSocket.Server({ port: 8080 });\nwss.on('connection', ws => {\n  ws.on('message', msg => {\n    // Broadcast to all\n    wss.clients.forEach(client => client.send(msg));\n  });\n});\n```"
+    }
+  ],
+  "quiz": {
+    "passingScore": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "What is the key advantage of WebSockets over HTTP?",
+        "options": [
+          "Better security",
+          "Low latency, bidirectional communication",
+          "Easier to debug"
+        ],
+        "correctAnswer": "Low latency, bidirectional communication",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "What is a 'tick rate'?",
+        "options": [
+          "The price of the server",
+          "How many times per second the server updates the game",
+          "The clock speed of the CPU"
+        ],
+        "correctAnswer": "How many times per second the server updates the game",
+        "explanation": "A tick rate of 20 means the server updates the world 20 times per second.",
+        "points": 1
+      }
+    ]
+  },
+  "miniProject": {
+    "title": "Multiplayer Box",
+    "description": "Sync a moving box between two browser tabs.",
+    "steps": [
+      "Setup WS server",
+      "Client sends x/y",
+      "Server broadcasts x/y",
+      "Other client updates phantom box"
+    ],
+    "deliverables": ["Functioning Sync Demo"],
+    "rubric": ["Movement in Tab A moves box in Tab B"],
+    "estimatedTime": 45
+  }
+}

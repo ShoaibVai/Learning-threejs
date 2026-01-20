@@ -1,0 +1,70 @@
+{
+  "id": "canvas-basics",
+  "title": "Canvas Fundamentals",
+  "slug": "canvas-basics",
+  "overview": "Learn how to draw efficiently and predictably using immediate mode rendering.",
+  "order": 1,
+  "durationMinutes": 25,
+  "objectives": [
+    "Understand the Canvas coordinate system",
+    "Draw basic shapes",
+    "Implement the clear -> draw process"
+  ],
+  "prerequisites": ["Game Loop Module"],
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Immediate Mode",
+      "content": "Canvas uses **Immediate Mode** rendering. It has no memory of objects. You must redraw the entire scene every frame.\n\n**Coordinates**:\n- Origin (0,0) is Top-Left\n- X is Right\n- Y is Down"
+    },
+    {
+      "type": "practice",
+      "title": "Moving Object",
+      "content": "Update an `x` variable by `speed * dt`, and use `ctx.fillRect(x, ...)` to draw it. Don't forget `ctx.clearRect`!"
+    }
+  ],
+  "quiz": {
+    "passingScore": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "What happens if you forget `ctx.clearRect`?",
+        "options": [
+          "The screen stays black",
+          "Previous frames remain visible (smearing effect)",
+          "The browser crashes"
+        ],
+        "correctAnswer": "Previous frames remain visible (smearing effect)",
+        "explanation": "Since pixel data persists until overwritten, failing to clear results in trails of old drawings.",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "Where is (0,0) on a Canvas?",
+        "options": [
+          "Center",
+          "Bottom-Left",
+          "Top-Left"
+        ],
+        "correctAnswer": "Top-Left",
+        "explanation": "The web coordinate system starts at the top-left corner.",
+        "points": 1
+      }
+    ]
+  },
+  "miniProject": {
+    "title": "Bouncing Box",
+    "description": "Create a box that bounces off the edges of the canvas.",
+    "steps": [
+      "Track x, y, dx, dy",
+      "Update position",
+      "Invert velocity (dx = -dx) if hitting walls",
+      "Render box"
+    ],
+    "deliverables": ["Functioning Bouncing Box demo"],
+    "rubric": ["Box bounces correctly", "No trails left behind"],
+    "estimatedTime": 25
+  }
+}

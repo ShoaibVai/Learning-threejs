@@ -1,0 +1,63 @@
+{
+  "id": "collision-physics",
+  "title": "Collision Detection & Physics",
+  "slug": "collision-physics",
+  "overview": "Make games feel physical using AABB collision detection.",
+  "order": 1,
+  "durationMinutes": 30,
+  "objectives": [
+    "Understand AABB (Axis-Aligned Bounding Box)",
+    "Implement a collision check function",
+    "Handle collision resolution (stopping movement)"
+  ],
+  "prerequisites": ["Geometry Basics"],
+  "sections": [
+    {
+      "type": "reading",
+      "title": "AABB Collision",
+      "content": "AABB checks if two non-rotated rectangles overlap. It is fast and simple.\n\nLogic:\n```js\nreturn (a.x < b.x + b.w && a.x + a.w > b.x && ...)\n```"
+    }
+  ],
+  "quiz": {
+    "passingScore": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "What does AABB stand for?",
+        "options": [
+          "Axis-Aligned Bounding Box",
+          "Advanced Area Bounding Box",
+          "All-Around Box Buffer"
+        ],
+        "correctAnswer": "Axis-Aligned Bounding Box",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "What is the limitation of AABB?",
+        "options": [
+          "It is slow",
+          "It cannot handle rotated shapes accurately",
+          "It only works for squares"
+        ],
+        "correctAnswer": "It cannot handle rotated shapes accurately",
+        "explanation": "Because the box is always aligned to X/Y axes, rotating the object does not rotate the box.",
+        "points": 1
+      }
+    ]
+  },
+  "miniProject": {
+    "title": "Collect the Coin",
+    "description": "Spawn a coin. When the player touches it, move the coin and increase score.",
+    "steps": [
+      "Create Player rect and Coin rect",
+      "Check collision every frame",
+      "If collision: score++, coin.x = random"
+    ],
+    "deliverables": ["Coin Collection Demo"],
+    "rubric": ["Collision detects accurately", "Score updates"],
+    "estimatedTime": 30
+  }
+}

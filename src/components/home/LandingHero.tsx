@@ -23,7 +23,7 @@ export function LandingHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl"
+            className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl"
           >
             Master <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Infrastructure</span> & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">Game Dev</span>
           </motion.h1>
@@ -32,7 +32,7 @@ export function LandingHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mx-auto max-w-[700px] text-lg text-slate-600 dark:text-slate-300 md:text-xl leading-relaxed"
+            className="mx-auto max-w-[700px] text-lg text-muted-foreground md:text-xl leading-relaxed"
           >
             Comprehensive learning paths designed for developers. From setting up secure servers to building multiplayer web games. Learn by doing.
           </motion.p>
@@ -52,7 +52,7 @@ export function LandingHero() {
             </Link>
             <Link
               href="/practice"
-              className="inline-flex h-12 items-center justify-center rounded-lg border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 px-8 text-sm font-medium text-slate-900 dark:text-slate-200 shadow-sm transition-all hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+              className="inline-flex h-12 items-center justify-center rounded-lg border border-input bg-background px-8 text-sm font-medium text-foreground shadow-sm transition-all hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               Practice Labs
             </Link>

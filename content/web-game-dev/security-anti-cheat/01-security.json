@@ -1,0 +1,62 @@
+{
+  "id": "security",
+  "title": "Game Security & Anti-Cheat",
+  "slug": "security",
+  "overview": "Prevent common exploits by validating all actions on the server.",
+  "order": 1,
+  "durationMinutes": 30,
+  "objectives": [
+    "Identify Speed Hacks and Packet Injection",
+    "Implement Server-Side Validation",
+    "Understand why Client trust is fatal"
+  ],
+  "prerequisites": ["Multiplayer Fundamentals"],
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Common Cheats",
+      "content": "1. **Speed Hacks**: Client tells server 'I moved 1000px' in 1 frame.\n2. **Packet Injection**: Fake messages sent to server.\n\n**Defense**: Server calculates max possible distance. If client > max, reject movement."
+    }
+  ],
+  "quiz": {
+    "passingScore": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "What is the layout of the 'Never Trust Client' rule?",
+        "options": [
+          "Clients only handle graphics/input; Server handles logic",
+          "Clients handle logic to save server CPU",
+          "Server asks client if they cheated"
+        ],
+        "correctAnswer": "Clients only handle graphics/input; Server handles logic",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "How to stop speed hacks?",
+        "options": [
+          "Ask the user nicely",
+          "Server checks distance moved / time elapsed",
+          "Ban fast internet connections"
+        ],
+        "correctAnswer": "Server checks distance moved / time elapsed",
+        "points": 1
+      }
+    ]
+  },
+  "miniProject": {
+    "title": "Speed Limit Validator",
+    "description": "Write a validation function.",
+    "steps": [
+      "Input: oldPos, newPos, dt",
+      "Calculate speed = dist / dt",
+      "If speed > maxSpeed, return false (cheat detected)"
+    ],
+    "deliverables": ["Validation Snippet"],
+    "rubric": ["Correctly identifies fast movement"],
+    "estimatedTime": 20
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "introduction",
+  "title": "Web Games vs Websites",
+  "slug": "introduction",
+  "overview": "Rewire your mindset from event-driven UI to frame-driven simulation.",
+  "order": 1,
+  "durationMinutes": 15,
+  "objectives": [
+    "Understand the difference between event-driven and frame-driven architectures",
+    "Learn why DOM is not suitable for high-performance games",
+    "Grasp the concept of a real-time simulation"
+  ],
+  "prerequisites": ["Basic HTML/JS"],
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Why Games Are Different",
+      "content": "### What is a Server?\nA server is defined by **behavior**, not hardware. It listens on a port, receives requests, and sends responses.\n\n### Web Apps vs Games\n**Web Apps** consist of event-driven UIs that react to user input and idle most of the time.\n\n**Games** run continuous loops, updating state every frame and rendering constantly. A game is a **real-time simulation**."
+    },
+    {
+      "type": "reading",
+      "title": "Core Differences",
+      "content": "| Websites | Games |\n|---|---|\n| Event-based | Frame-based |\n| Stateless UI | Stateful world |\n| Low CPU usage | Continuous CPU/GPU usage |\n| DOM-heavy | Canvas/WebGL |"
+    }
+  ],
+  "quiz": {
+    "passingScore": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "Why does `setInterval` often fail for games?",
+        "options": [
+          "It is too precise",
+          "It does not sync with the screen refresh rate",
+          "It uses too much memory"
+        ],
+        "correctAnswer": "It does not sync with the screen refresh rate",
+        "explanation": "setInterval creates janky movement because it ignores the monitor's VSync cycle. requestAnimationFrame is preferred.",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "What drives a game's logic?",
+        "options": [
+          "User clicks",
+          "The Frame Loop",
+          "Database queries"
+        ],
+        "correctAnswer": "The Frame Loop",
+        "explanation": "Games update their state continuously every frame, regardless of user input.",
+        "points": 1
+      }
+    ]
+  },
+  "miniProject": {
+    "title": "Comparison Analysis",
+    "description": "Analyze the difference between a DOM animation and a Canvas loop.",
+    "steps": [
+      "Write down 3 reasons DOM is bad for games",
+      "Write down 3 reasons Canvas/WebGL is better"
+    ],
+    "deliverables": ["A text file with your analysis"],
+    "rubric": ["Identifies performance bottlenecks of DOM", "Understands immediate mode rendering"],
+    "estimatedTime": 10
+  }
+}

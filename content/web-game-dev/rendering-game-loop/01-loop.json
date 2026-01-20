@@ -1,0 +1,69 @@
+{
+  "id": "loop",
+  "title": "The Game Loop",
+  "slug": "loop",
+  "overview": "Master the heart of every game: Input -> Update -> Render -> Repeat.",
+  "order": 1,
+  "durationMinutes": 20,
+  "objectives": [
+    "Implement a basic game loop using requestAnimationFrame",
+    "Understand Delta Time (dt)",
+    "Differentiate between Fixed and Variable timesteps"
+  ],
+  "prerequisites": ["Basic JS Functions"],
+  "sections": [
+    {
+      "type": "reading",
+      "title": "The Loop Structure",
+      "content": "A typical loop involves:\n1. **Input**: capturing controls\n2. **Update**: moving physics/logic\n3. **Render**: drawing to the screen\n\nOn the web, we use `requestAnimationFrame()` to sync with the display (usually 60Hz)."
+    },
+    {
+      "type": "practice",
+      "title": "Practice: Basic Loop",
+      "content": "Create a `loop` function that calculates `delta` (time passed) and calls `update(delta)` and `render()`."
+    }
+  ],
+  "quiz": {
+    "passingScore": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "What is `delta` time?",
+        "options": [
+          "The time the game started",
+          "The time elapsed since the last frame",
+          "The current hour"
+        ],
+        "correctAnswer": "The time elapsed since the last frame",
+        "explanation": "Delta time allows movement to be smooth regardless of frame rate (frame independence).",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "Why refrain from a simplified variable timestep for complex physics?",
+        "options": [
+          "It is too slow",
+          "It can lead to unstable physics behaviors",
+          "It crashes the browser"
+        ],
+        "correctAnswer": "It can lead to unstable physics behaviors",
+        "explanation": "Variable timesteps can cause physics glitches if the frame rate drops significantly."
+      }
+    ]
+  },
+  "miniProject": {
+    "title": "Build a Loop",
+    "description": "Create a simple HTML page with a square moving across the screen using a proper game loop.",
+    "steps": [
+      "Setup a <canvas>",
+      "Create a loop() function",
+      "Use requestAnimationFrame",
+      "Clear and redraw a rectangle moving 100px per second"
+    ],
+    "deliverables": ["Single HTML file with script"],
+    "rubric": ["Square moves smoothly", "Uses Delta Time"],
+    "estimatedTime": 20
+  }
+}

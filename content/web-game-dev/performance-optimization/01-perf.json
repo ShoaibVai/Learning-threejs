@@ -1,0 +1,67 @@
+{
+  "id": "performance",
+  "title": "Performance & Optimization",
+  "slug": "performance",
+  "overview": "Ensure your game runs smoothly on low-end devices by managing memory.",
+  "order": 1,
+  "durationMinutes": 30,
+  "objectives": [
+    "Identify performance killers like Garbage Collection",
+    "Implement Object Pooling",
+    "Reduce draw calls"
+  ],
+  "prerequisites": ["Arrays & Objects"],
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Performance Killers",
+      "content": "1. **Object Creation**: `new Bullet()` every frame fills memory.\n2. **Garbage Collection (GC)**: Browser pauses game to clean memory.\n3. **Draw Calls**: Too many commands slow down GPU."
+    },
+    {
+      "type": "reading",
+      "title": "Object Pooling",
+      "content": "Instead of deleting objects, mark them as `inactive`. When you need a new one, revive an inactive one. This prevents GC spikes."
+    }
+  ],
+  "quiz": {
+    "passingScore": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "Why does Garbage Collection cause frame drops?",
+        "options": [
+          "It consumes internet bandwidth",
+          "It pauses code execution to reclaim memory",
+          "It overheats the GPU"
+        ],
+        "correctAnswer": "It pauses code execution to reclaim memory",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "What is Object Pooling?",
+        "options": [
+          "Combining objects into a mega-object",
+          "Reusing objects instead of creating/destroying them",
+          "Sharing objects between players"
+        ],
+        "correctAnswer": "Reusing objects instead of creating/destroying them",
+        "points": 1
+      }
+    ]
+  },
+  "miniProject": {
+    "title": "Particle System Pool",
+    "description": "Create a particle explosion using an Object Pool.",
+    "steps": [
+      "Create a pool of 100 particle objects",
+      "When explosion happens, activate 20 particles",
+      "When particle life < 0, deactivate (do not destroy)"
+    ],
+    "deliverables": ["Smooth Particle System"],
+    "rubric": ["Zero 'new' keywords in update loop", "Stable FPS"],
+    "estimatedTime": 45
+  }
+}

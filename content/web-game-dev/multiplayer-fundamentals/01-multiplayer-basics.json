@@ -1,0 +1,64 @@
+{
+  "id": "multiplayer-basics",
+  "title": "Multiplayer Fundamentals",
+  "slug": "multiplayer-basics",
+  "overview": "Understand real-time networking models and authority.",
+  "order": 1,
+  "durationMinutes": 20,
+  "objectives": [
+    "Understand Client-Server Architecture",
+    "Define 'Authoritative Server'",
+    "Why Peer-to-Peer is risky for competitive games"
+  ],
+  "prerequisites": ["Basic Networking Concepts"],
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Client-Server Model",
+      "content": "In this model, the **Server is God**. Clients send inputs (e.g., 'I pressed Right'), and the Server calculates the result and sends back the true state.\n\n**Rule**: Never trust the client."
+    }
+  ],
+  "quiz": {
+    "passingScore": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "Who calculates the true game state?",
+        "options": [
+          "The fastest client",
+          "The Server",
+          "The Spectator"
+        ],
+        "correctAnswer": "The Server",
+        "explanation": "To prevent cheating and sync issues, one source of truth (the server) must exist.",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "What does the client send to the server?",
+        "options": [
+          "The new player position",
+          "The inputs (keys pressed)",
+          "The whole game code"
+        ],
+        "correctAnswer": "The inputs (keys pressed)",
+        "explanation": "Sending inputs prevents 'teleport hacks' where a client claims to be somewhere they shouldn't.",
+        "points": 1
+      }
+    ]
+  },
+  "miniProject": {
+    "title": "Concept Diagram",
+    "description": "Draw a diagram of the data flow between 2 clients and 1 server.",
+    "steps": [
+      "Show Client A sending Input",
+      "Show Server processing",
+      "Show Server sending State to Client A and Client B"
+    ],
+    "deliverables": ["Diagram (Image or Text)"],
+    "rubric": ["Correct flow direction", "Server is central node"],
+    "estimatedTime": 15
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "id": "expert",
+  "title": "Deployment, Analytics & Monetization",
+  "slug": "expert",
+  "overview": "Ship your game, track its success, and understand how to sustain it.",
+  "order": 1,
+  "durationMinutes": 25,
+  "objectives": [
+    "Deploy to Static Hosts (Vercel/Netlify)",
+    "Implement Basic Analytics",
+    "Explore Monetization Models"
+  ],
+  "prerequisites": ["Completed Game"],
+  "sections": [
+    {
+      "type": "reading",
+      "title": "Deployment",
+      "content": "Web games are just static sites. Use CDNs for assets to ensure fast loading globally. Gzip/Brotli compression is huge for game assets."
+    },
+    {
+      "type": "reading",
+      "title": "Monetization",
+      "content": "- Ads (Interstitial/Rewarded)\n- Brand Integrations\n- In-App Purchases (requires backend validation)"
+    }
+  ],
+  "quiz": {
+    "passingScore": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "question": "Why use a CDN?",
+        "options": [
+          "It makes code secure",
+          "It serves assets from servers close to the user",
+          "It creates backups"
+        ],
+        "correctAnswer": "It serves assets from servers close to the user",
+        "explanation": "Low latency is critical for asset loading speed.",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "single",
+        "question": "What is a 'Rewarded Ad'?",
+        "options": [
+          "An ad that pays the developer",
+          "An ad the user watches voluntarily for a game reward (e.g., extra life)",
+          "A banner ad"
+        ],
+        "correctAnswer": "An ad the user watches voluntarily for a game reward (e.g., extra life)",
+        "points": 1
+      }
+    ]
+  },
+  "miniProject": {
+    "title": "Deployment Plan",
+    "description": "Create a checklist for launching your game.",
+    "steps": [
+      "Minify code",
+      "Compress assets",
+      "Setup CDN",
+      "Add Analytics ID"
+    ],
+    "deliverables": ["Checklist Text File"],
+    "rubric": ["Includes asset optimization steps"],
+    "estimatedTime": 15
+  }
+}

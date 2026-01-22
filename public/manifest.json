@@ -1,0 +1,48 @@
+{
+  "name": "Learning Platform - Server & Networking | Web Game Dev",
+  "short_name": "Learning Platform",
+  "description": "Master server infrastructure and web game development with hands-on lessons",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Search Lessons",
+      "short_name": "Search",
+      "description": "Search through lessons and content",
+      "url": "/search",
+      "icons": [{ "src": "/icon-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Practice",
+      "short_name": "Practice",
+      "description": "Access practice exercises",
+      "url": "/practice",
+      "icons": [{ "src": "/icon-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Progress",
+      "short_name": "Progress",
+      "description": "View your learning progress",
+      "url": "/progress",
+      "icons": [{ "src": "/icon-192.svg", "sizes": "192x192" }]
+    }
+  ]
+}
